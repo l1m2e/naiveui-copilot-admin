@@ -9,10 +9,16 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     NButton: typeof import('naive-ui')['NButton']
+    NCard: typeof import('naive-ui')['NCard']
+    NDivider: typeof import('naive-ui')['NDivider']
+    NLayout: typeof import('naive-ui')['NLayout']
+    NLayoutContent: typeof import('naive-ui')['NLayoutContent']
+    NLayoutFooter: typeof import('naive-ui')['NLayoutFooter']
+    NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
+    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
+    NMenu: typeof import('naive-ui')['NMenu']
+    NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TheCounter: typeof import('./src/components/TheCounter.vue')['default']
-    TheFooter: typeof import('./src/components/TheFooter.vue')['default']
-    TheInput: typeof import('./src/components/TheInput.vue')['default']
   }
 }

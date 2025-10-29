@@ -1,5 +1,6 @@
 import path from 'node:path'
 import Vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
@@ -57,6 +58,6 @@ export default defineConfig({
     // https://github.com/antfu/unocss
     // see uno.config.ts for config
     UnoCSS(),
+    vueJsx(),
   ],
-
 })

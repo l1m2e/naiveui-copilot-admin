@@ -1,5 +1,5 @@
 <template>
   <main font-sans>
-    <n-button>naive-ui</n-button>
+    <router-view />
   </main>
 </template>
