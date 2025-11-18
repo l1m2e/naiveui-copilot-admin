@@ -1,3 +1,4 @@
+import transformerDirectives from '@unocss/transformer-directives'
 import {
   defineConfig,
   presetAttributify,
@@ -26,4 +27,7 @@ export default defineConfig({
       },
     }),
   ],
+  transformers: [
+    transformerDirectives(),
+  ]
 })

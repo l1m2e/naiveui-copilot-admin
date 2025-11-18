@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { LAYOUTPROVIDE_KEY } from './constants'
+import { LAYOUTPROVIDE_KEY } from '../constants'
 
 const config = ref({
   sidebarCollapsed: false,

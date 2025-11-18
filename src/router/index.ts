@@ -1,25 +1,16 @@
+import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router'
-import Layout from '~/layout/layout.vue'
-
-const constantRoutes = [
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('~/pages/index/index.vue'),
-        name: 'Index',
-        meta: { title: '工作站', icon: 'i-yst-menu-home', keepAlive: true },
-      },
-    ],
-  },
-]
+import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: constantRoutes,
+  routes: setupLayouts(routes),
+})
+
+router.beforeEach((to, from, next) => {
+  const { addTag } = useTagsStroe()
+  !to.meta?.noCache && addTag({ path: to.path, name: to.name as string, label: to.meta?.title as string || '' })
+  next()
 })
 
 export default router
