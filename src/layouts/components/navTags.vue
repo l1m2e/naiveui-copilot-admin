@@ -2,90 +2,154 @@
 import { useScroll } from '@vueuse/core'
 import { useThemeVars } from 'naive-ui'
 import { storeToRefs } from 'pinia'
+import {
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuPortal,
+  ContextMenuRoot,
+  ContextMenuTrigger,
+} from 'reka-ui'
 import { computed, ref } from 'vue'
 import router from '~/router'
 
+const { removeTag: removeTagFromStore } = useTagsStroe()
 const { tagsList, currentTag } = storeToRefs(useTagsStroe())
 
-// 点击tag跳转路由
+function navigateAfterRemove(index: number) {
+  const list = tagsList.value
+  if (list.length <= 1) return
+
+  const isLast = index === list.length - 1
+  const next = isLast ? list[index - 1] : list[index + 1]
+  next && router.push(next.path)
+}
+
+function removeTag(val: Tags) {
+  const index = tagsList.value.findIndex(item => item.path === val.path)
+  navigateAfterRemove(index)
+  removeTagFromStore(val.path)
+}
+
 function selectTag(val: Tags) {
   router.push(val.path)
 }
 
-// 删除标签
-function removeTag(val: Tags) {
-  const index = tagsList.value.findIndex(item => item.path === val.path)
-  const isLast = index === tagsList.value.length - 1
-
-  if (isLast) {
-    router.push(tagsList.value[index - 1].path)
-  }
-  else {
-    router.push(tagsList.value[index + 1].path)
-  }
-
-  tagsList.value.splice(index, 1)
+function closeCurrent(item: Tags) {
+  const index = tagsList.value.findIndex(tag => tag.path === item.path)
+  navigateAfterRemove(index)
+  removeTagFromStore(item.path)
 }
 
-// 滚动相关 - 使用 VueUse 简化
-const scrollContainer = ref<HTMLElement>()
+function closeOthers(item: Tags) {
+  tagsList.value = tagsList.value.filter(
+    tag => tag.path === '/' || tag.path === item.path,
+  )
+}
+
+function closeLeft(item: Tags) {
+  const index = tagsList.value.findIndex(tag => tag.path === item.path)
+  tagsList.value = tagsList.value.filter(
+    (v, i) => i >= index || v.path === '/',
+  )
+}
+
+function closeRight(item: Tags) {
+  const index = tagsList.value.findIndex(tag => tag.path === item.path)
+  tagsList.value = tagsList.value.slice(0, index + 1)
+}
+
+// 菜单配置
+function getContextMenuItems(item: Tags) {
+  // 首页不显示右键菜单
+  if (item.path === '/') {
+    return []
+  }
+  return [
+    { label: '关闭当前', icon: 'i-ri-close-line', action: () => closeCurrent(item) },
+    { label: '关闭其他', icon: 'i-ri-close-circle-line', action: () => closeOthers(item) },
+    { label: '关闭左侧', icon: 'i-ri-arrow-left-circle-line', action: () => closeLeft(item) },
+    { label: '关闭右侧', icon: 'i-ri-arrow-right-circle-line', action: () => closeRight(item) },
+  ]
+}
+
+const scrollContainer = ref<HTMLElement | null>(null)
 const { x: scrollLeft, arrivedState } = useScroll(scrollContainer, { behavior: 'smooth' })
 
 const showLeftArrow = computed(() => !arrivedState.left)
 const showRightArrow = computed(() => !arrivedState.right)
 
-function scrollToLeft() {
-  scrollLeft.value -= 200
+function scrollBy(offset: number) {
+  scrollLeft.value += offset
 }
-
-function scrollToRight() {
-  scrollLeft.value += 200
-}
+const scrollToLeft = () => scrollBy(-200)
+const scrollToRight = () => scrollBy(200)
 
 const vars = useThemeVars()
 </script>
 
 <template>
   <div class="flex items-center relative">
+    <!-- 左箭头 -->
     <Transition name="fade">
       <button
         v-if="showLeftArrow"
-        class="bg-white flex h-[34px] w-8 cursor-pointer items-center left-0 justify-center absolute z-10"
+        class="nav-arrow flex h-32px w-8 cursor-pointer transition-colors items-center left-0 justify-center absolute z-10 hover:bg-gray-100"
         @click="scrollToLeft"
       >
-        <div class="i-ri-arrow-left-s-line text-lg" />
+        <div class="i-ri-arrow-left-s-line text-base" />
       </button>
     </Transition>
 
     <!-- 标签容器 -->
-    <div ref="scrollContainer" class="scrollbar-hide px-4 flex flex-1 items-center overflow-x-auto">
-      <div
-        v-for="item in tagsList" :key="item.label" class="tab-item group flex flex-shrink-0 h-[34px] items-center"
-        :class="currentTag?.path === item.path ? 'activation' : 'hover:bg-gray-200 rounded'"
-        @click="() => selectTag(item)"
-      >
-        <div class="flex gap-5px items-center justify-between">
-          <div>{{ item.label }}</div>
+    <div ref="scrollContainer" class="scrollbar-hide px-2 flex flex-1 items-center overflow-x-auto">
+      <ContextMenuRoot v-for="item in tagsList" :key="item.label">
+        <ContextMenuTrigger as-child>
           <div
-            v-if="item.path !== '/'" class="rounded-full transition-all" :class="[
-              currentTag && currentTag.path === item.path
-                ? 'opacity-100 hover:text-black hover:bg-white'
-                : 'opacity-0 group-hover:opacity-100 hover:text-black hover:bg-white',
-            ]" @click.stop="() => removeTag(item)"
+            class="tab-item group flex flex-shrink-0 h-32px items-center"
+            :class="currentTag?.path === item.path ? 'activation' : 'transition-colors hover:bg-gray-100'"
+            @click="() => selectTag(item)"
           >
-            <div class="i-ri-close-line" />
+            <div class="flex gap-5px items-center justify-between">
+              <div>{{ item.label }}</div>
+
+              <!-- 关闭按钮 -->
+              <div
+                v-if="item.path !== '/'" class="rounded-full transition-all" :class="[
+                  currentTag?.path === item.path
+                    ? 'opacity-100 hover:text-black hover:bg-white'
+                    : 'opacity-0 group-hover:opacity-100 hover:text-black hover:bg-gray-300',
+                ]" @click.stop="() => removeTag(item)"
+              >
+                <div class="i-ri-close-line" />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </ContextMenuTrigger>
+
+        <!-- 右键菜单 -->
+        <ContextMenuPortal>
+          <ContextMenuContent class="p-1 border border-gray-200 rounded-md bg-white shadow-lg z-9999">
+            <ContextMenuItem
+              v-for="menuItem in getContextMenuItems(item)" :key="menuItem.label"
+              class="text-sm px-3 py-2 outline-none rounded flex gap-2 cursor-pointer transition-colors items-center hover:bg-gray-100"
+              @select="menuItem.action"
+            >
+              <div :class="menuItem.icon" />
+              <span>{{ menuItem.label }}</span>
+            </ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenuPortal>
+      </ContextMenuRoot>
     </div>
 
+    <!-- 右箭头 -->
     <Transition name="fade">
       <button
         v-if="showRightArrow"
-        class="bg-white flex h-[34px] w-8 cursor-pointer items-center right-0 justify-center absolute z-10"
+        class="nav-arrow flex h-32px w-8 cursor-pointer transition-colors items-center right-0 justify-center absolute z-10 hover:bg-gray-100"
         @click="scrollToRight"
       >
-        <div class="i-ri-arrow-right-s-line text-lg" />
+        <div class="i-ri-arrow-right-s-line text-base" />
       </button>
     </Transition>
   </div>
@@ -121,6 +185,7 @@ const vars = useThemeVars()
 .scrollbar-hide {
   scrollbar-width: none;
   -ms-overflow-style: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
