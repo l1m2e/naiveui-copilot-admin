@@ -1,10 +1,13 @@
 <script lang="ts" setup>
+import type { FormItemRule } from 'naive-ui'
 import type { FormItemProps } from '.'
 import { isFunction, isString } from 'es-toolkit'
 import { NFormItem } from 'naive-ui'
 import { formInjectionKey } from 'naive-ui/lib/form/src/context'
 import { isVNode } from 'vue'
+import { AUTOMATIC_COLLECTION_SCHEMA_KEY } from '~/composables/useForm'
 import { FORM_ITEM_COMPONENT_MAP } from '~/constants'
+import { yupToRule } from '~/utils/form-validation'
 
 const props = defineProps<FormItemProps>()
 const NForm = inject(formInjectionKey, null)!
@@ -20,14 +23,33 @@ const itemProps = computed(() => {
     : componentProps
 })
 
+// 将 Yup schema 转换为 naive-ui rule
+const normalizedRule = computed<FormItemRule | FormItemRule[] | undefined>(() => {
+  if (!props.rule)
+    return undefined
+  return yupToRule(props.rule)
+})
+
 // 组件创建 通过 value 生成默认值
 if (props.value !== undefined && props.value !== null) {
   toValue(NForm.props.model)[props.field!] = props.value
 }
 
+// 注册单个 item 到 useForm
+const formContext = inject(AUTOMATIC_COLLECTION_SCHEMA_KEY)
+
+onMounted(() => {
+  if (formContext && props.field) {
+    formContext?.collect(props)
+  }
+})
+
 onBeforeUnmount(() => {
   // 清理默认值 组件卸载或者隐藏自动清理数据
   delete toValue(NForm.props.model)[props.field!]
+  if (formContext && props.field) {
+    formContext?.release(props.field)
+  }
 })
 </script>
 
@@ -35,7 +57,7 @@ onBeforeUnmount(() => {
   <component
     :is="(props.label || props.field) ? NFormItem : 'div'"
     :path="props.field"
-    :rules="props.rule"
+    :rule="normalizedRule"
     v-bind="props.formItemProps"
   >
     <!-- 动态 label -->

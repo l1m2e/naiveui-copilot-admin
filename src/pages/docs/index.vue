@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 definePage({
   meta: {
-    title: '测试',
-    icon: 'i-ri-catalog',
-    order: 2
+    title: '文档',
+    icon: 'i-ri-file-word-2-line',
+    order: 5,
   },
 })
 </script>

@@ -34,10 +34,12 @@ function wrap(name: string, component: VueComponent) {
         <n-layout-header class="h-80px">
           <Header />
         </n-layout-header>
-        <n-layout-content class="p-4 bg-gray-50 h-[calc(100vh-90px)] dark:bg-slate-800">
+        <n-layout-content class="bg-gray-50 h-[calc(100vh-90px)] dark:bg-slate-800">
           <router-view v-slot="{ Component, route }">
             <keep-alive :include="pageCaches">
-              <Component :is="wrap(route.path, Component)" :key="route.fullPath" />
+              <div class="p-4">
+                <Component :is="wrap(route.path, Component)" :key="route.fullPath" />
+              </div>
             </keep-alive>
           </router-view>
         </n-layout-content>

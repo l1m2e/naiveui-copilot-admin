@@ -3,6 +3,7 @@ definePage({
   meta: {
     title: '首页',
     icon: 'i-ri-home-2-fill',
+    order: 1,
   },
 })
 </script>

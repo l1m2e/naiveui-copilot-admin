@@ -16,8 +16,8 @@ definePage({
 const [Form, form, formRef] = useForm<Record<string, any>>()
 
 const items: FormItemProps[] = [
-  { label: () => `${form.value.input} Input`, field: 'input', component: 'n-input', value: '123' },
-  { label: 'AutoComplete', field: 'autocomplete', component: 'n-auto-complete' },
+  { label: 'Input', field: 'input', component: 'n-input', rule: yup.string().positiveNumber().required(), },
+  { label: 'AutoComplete', field: 'autocomplete', component: 'n-auto-complete', rule: yup.string().required() },
   { label: 'Cascader', field: 'cascader', component: 'n-cascader' },
   { label: 'Color Picker', field: 'color', component: 'n-color-picker' },
   { label: 'Checkbox', field: 'checkbox', component: 'n-checkbox' },
@@ -37,10 +37,16 @@ const items: FormItemProps[] = [
   { label: 'Tree Select', field: 'treeSelect', component: 'n-tree-select' },
   { label: 'Upload', field: 'upload', component: 'n-upload', slots: { default: () => h('span', '上传文件') } },
 ]
+
+async function submitForm() {
+  await formRef.value?.validate()
+  console.log(' 表单验证通过', form.value)
+}
 </script>
 
 <template>
   <n-card>
+    <n-button @click="submitForm">提交</n-button>
     <div class="gap-2 grid grid-cols-2">
       <Form.Root>
         <Form.ItemGrid :items="items" class="grid-cols-3" />

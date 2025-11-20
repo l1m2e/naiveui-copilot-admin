@@ -17,7 +17,10 @@ export default defineConfig({
     },
   },
   plugins: [
-    VueRouter({ dts: 'src/types/typed-router.d.ts' }),
+    VueRouter({
+      exclude: ['**/components/**'],
+      dts: 'src/types/typed-router.d.ts'
+    }),
 
     Vue({
       script: {
@@ -45,6 +48,11 @@ export default defineConfig({
             'useLoadingBar',
           ],
         },
+        {
+          yup: [
+            ['*', 'yup'],
+          ],
+        }
       ],
       dts: 'src/types/auto-imports.d.ts',
       dirs: [
