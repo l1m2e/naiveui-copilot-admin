@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const AUTOMATIC_COLLECTION_SCHEMA_KEY: typeof import('../composables/useForm')['AUTOMATIC_COLLECTION_SCHEMA_KEY']
   const EffectScope: typeof import('vue')['EffectScope']
   const addMethod: typeof import('yup')['addMethod']
   const array: typeof import('yup')['array']
@@ -34,7 +35,6 @@ declare global {
   const date: typeof import('yup')['date']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
-  const default: typeof import('yup')['default']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineLoader: typeof import('vue-router/auto')['defineLoader']
@@ -326,6 +326,9 @@ declare global {
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
+  export type { UseFormInst } from '../composables/useForm'
+  import('../composables/useForm')
+  // @ts-ignore
   export type { AppMenuOption, PermissionTreeNode, SimpleNode } from '../stores/useMenu'
   import('../stores/useMenu')
   // @ts-ignore
@@ -338,6 +341,7 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
+    readonly AUTOMATIC_COLLECTION_SCHEMA_KEY: UnwrapRef<typeof import('../composables/useForm')['AUTOMATIC_COLLECTION_SCHEMA_KEY']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
