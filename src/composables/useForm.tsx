@@ -63,7 +63,7 @@ export const AUTOMATIC_COLLECTION_SCHEMA_KEY = Symbol('AutomaticCollectionSchema
  * 目前只用于重置表单
  */
 function useAutomaticCollectionSchema() {
-  const formItems = ref<FormItemProps[]>([])
+  const formItems = shallowRef<FormItemProps[]>([])
   const provideAutomaticCollectionSchemaKey = () => provide(AUTOMATIC_COLLECTION_SCHEMA_KEY, {
     collect: (item: FormItemProps) => {
       formItems.value.push(item)
