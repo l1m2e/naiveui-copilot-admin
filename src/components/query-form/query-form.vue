@@ -4,7 +4,7 @@ import { BREAKPOINTS } from '~/constants'
 
 const {
   items = [],
-  gridCols = 'xl:grid-cols-5 grid-cols-3',
+  gridCols = '2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1',
   defaultCollapsed = true,
   collapsedRows = 2,
   search,
@@ -76,11 +76,11 @@ defineExpose({
 
 <template>
   <Form.Root label-placement="left" label-width="auto">
-    <div class="gap-2 grid" :class="typeof gridCols === 'string' ? gridCols : ''">
+    <div class="gap-x-2 grid" :class="typeof gridCols === 'string' ? gridCols : ''">
       <template v-for="item in visibleItems" :key="item.field">
         <Form.Item v-bind="item" />
       </template>
-      <div class="flex gap-2 items-start justify-end" :style="{ gridColumnStart: currentColumns }">
+      <div class="flex gap-x-2 items-start justify-end" :style="{ gridColumnStart: currentColumns }">
         <NButton :loading="isResetLoading || isSearchLoading" class="w-80px" @click="executeReset">重置</NButton>
         <NButton type="primary" :loading="isSearchLoading || isResetLoading" class="w-80px" @click="executeSearch">查询</NButton>
         <div v-if="showCollapseButton" class="ml-2 mt-2 flex gap-1 cursor-pointer items-center" @click="toggleCollapse">
