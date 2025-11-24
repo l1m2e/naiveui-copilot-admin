@@ -3,6 +3,7 @@ import type { FormItemProps } from '~/components/form-item'
 import { formProps, NForm } from 'naive-ui'
 import FormItemGrid from '~/components/form-item-grid/form-item-grid.vue'
 import FormItem from '~/components/form-item/form-item.vue'
+import { FORM_ITEM_COMPONENT_MAP } from '~/constants'
 
 export interface UseFormInst extends FormInst {
   reset: () => void
@@ -38,7 +39,15 @@ export function useForm<T>() {
     const resetData: Record<string, any> = {}
     formItems.value.forEach((item) => {
       if (item.field) {
-        resetData[item.field] = item.value !== undefined ? item.value : null
+        if (item.value !== undefined) {
+          resetData[item.field] = item.value
+        }
+        else if (typeof item.component === 'string' && FORM_ITEM_COMPONENT_MAP[item.component as keyof typeof FORM_ITEM_COMPONENT_MAP]?.defaultValue !== undefined) {
+          resetData[item.field] = FORM_ITEM_COMPONENT_MAP[item.component as keyof typeof FORM_ITEM_COMPONENT_MAP].defaultValue
+        }
+        else {
+          resetData[item.field] = null
+        }
       }
     })
     form.value = resetData as T

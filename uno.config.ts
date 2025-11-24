@@ -6,6 +6,7 @@ import {
   presetWebFonts,
   presetWind4,
 } from 'unocss'
+import { BREAKPOINTS } from './src/constants'
 
 export default defineConfig({
   shortcuts: [
@@ -29,5 +30,10 @@ export default defineConfig({
   ],
   transformers: [
     transformerDirectives(),
-  ]
+  ],
+  theme: {
+    breakpoints: Object.fromEntries(
+      Object.entries(BREAKPOINTS).map(([k, v]) => [k, `${v}px`]),
+    ),
+  },
 })

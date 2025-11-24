@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
 import type { FormItemProps } from '~/components/form-item'
-import { h } from 'vue'
 
 definePage({
   meta: {
@@ -13,46 +12,41 @@ definePage({
   },
 })
 
-const [Form, form, formRef] = useForm<Record<string, any>>()
-
 const items: FormItemProps[] = [
-  { label: 'Input', field: 'input', component: 'n-input', rule: yup.string().positiveNumber().required(), },
-  { label: 'AutoComplete', field: 'autocomplete', component: 'n-auto-complete', rule: yup.string().required() },
-  { label: 'Cascader', field: 'cascader', component: 'n-cascader' },
-  { label: 'Color Picker', field: 'color', component: 'n-color-picker' },
-  { label: 'Checkbox', field: 'checkbox', component: 'n-checkbox' },
-  { label: 'Date Picker', field: 'date', component: 'n-date-picker' },
-  { label: 'Dynamic Input', field: 'dynamicInput', component: 'n-dynamic-input' },
-  { label: 'Dynamic Tags', field: 'dynamicTags', component: 'n-dynamic-tags' },
-  { label: 'Input Number', field: 'inputNumber', component: 'n-input-number' },
-  { label: 'Input OTP', field: 'inputOtp', component: 'n-input-otp' },
-  { label: 'Mention', field: 'mention', component: 'n-mention' },
-  { label: 'Radio', field: 'radio', component: 'n-radio' },
-  { label: 'Rate', field: 'rate', component: 'n-rate' },
-  { label: 'Select', field: 'select', component: 'n-select' },
-  { label: 'Slider', field: 'slider', component: 'n-slider' },
-  { label: 'Switch', field: 'isActive', component: 'n-switch' },
-  { label: 'Time Picker', field: 'time', component: 'n-time-picker' },
-  { label: 'Transfer', field: 'transfer', component: 'n-transfer', formItemProps: { class: 'col-span-3' } },
-  { label: 'Tree Select', field: 'treeSelect', component: 'n-tree-select' },
-  { label: 'Upload', field: 'upload', component: 'n-upload', slots: { default: () => h('span', '上传文件') } },
+  { label: 'Input1', field: 'input1', component: 'n-input' },
+  { label: 'Input2', field: 'input2', component: 'n-input' },
+  { label: 'Input3', field: 'input3', component: 'n-input' },
+  { label: 'Input4', field: 'input4', component: 'n-input' },
+  { label: 'Input5', field: 'input5', component: 'n-input' },
+  { label: 'Input6', field: 'input6', component: 'n-input' },
+  { label: 'Input7', field: 'input7', component: 'n-input' },
+  { label: 'Input8', field: 'input8', component: 'n-input' },
+  { label: 'Input9', field: 'input9', component: 'n-input' },
+  { label: 'Input10', field: 'input10', component: 'n-input' },
+  { label: 'Input11', field: 'input11', component: 'n-input' },
+  { label: 'Input12', field: 'input12', component: 'n-input' },
 ]
 
-async function submitForm() {
-  await formRef.value?.validate()
-  console.log(' 表单验证通过', form.value)
+const queryFormRef = useTemplateRef('queryFormRef')
+
+// 模拟异步查询函数
+async function search(values: any) {
+  console.log('dian')
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({})
+    }, 1000)
+  })
 }
 </script>
 
 <template>
-  <n-card>
-    <n-button @click="submitForm">提交</n-button>
-    <div class="gap-2 grid grid-cols-2">
-      <Form.Root>
-        <Form.ItemGrid :items="items" class="grid-cols-3" />
-      </Form.Root>
+  <n-card title="UseQueryForm Test">
+    <QueryForm ref="queryFormRef" :items="items" :search="search" />
 
-      <pre>{{ form }}</pre>
+    <div class="mt-4 pt-4 border-t">
+      <h3 class="font-bold mb-2">Form Data:</h3>
+      <pre class="p-2 rounded bg-gray-100">{{ queryFormRef?.form }}</pre>
     </div>
   </n-card>
 </template>
