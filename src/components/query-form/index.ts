@@ -13,7 +13,7 @@ export interface QueryFormProps {
   /** 收起状态下展示的行数 */
   collapsedRows?: number
   /** 查询函数 */
-  search?: (values: any) => void | Promise<void>
+  search?: (values: any) => void | Promise<any>
   /** 重置函数 */
-  reset?: () => void | Promise<void>
+  reset?: () => void | Promise<any>
 }

@@ -9,9 +9,8 @@ import RuleExample from './components/rule-example.vue'
 
 definePage({
   meta: {
-    title: 'useForm 示例',
-    icon: 'i-ri-file-word-line',
-    order: 10,
+    title: 'useForm',
+    order: 1,
   },
 })
 
