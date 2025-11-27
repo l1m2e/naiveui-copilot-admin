@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { QueryFormProps } from './index'
+import { NCard } from 'naive-ui'
 import { BREAKPOINTS } from '~/constants'
 
 const {
@@ -8,7 +9,8 @@ const {
   defaultCollapsed = true,
   collapsedRows = 2,
   search,
-  reset
+  reset,
+  as = NCard
 } = defineProps<QueryFormProps>()
 
 const [Form, form, formRef] = useForm<any>()
@@ -75,19 +77,21 @@ defineExpose({
 </script>
 
 <template>
-  <Form.Root label-placement="left" label-width="auto">
-    <div class="gap-x-2 grid" :class="typeof gridCols === 'string' ? gridCols : ''">
-      <template v-for="item in visibleItems" :key="item.field">
-        <Form.Item v-bind="item" />
-      </template>
-      <div class="flex gap-x-2 items-start justify-end" :style="{ gridColumnStart: currentColumns }">
-        <NButton :loading="isResetLoading || isSearchLoading" class="w-80px" @click="executeReset">重置</NButton>
-        <NButton type="primary" :loading="isSearchLoading || isResetLoading" class="w-80px" @click="executeSearch">查询</NButton>
-        <div v-if="showCollapseButton" class="ml-2 mt-2 flex gap-1 cursor-pointer items-center" @click="toggleCollapse">
-          {{ isCollapsed ? '展开' : '收起' }}
-          <div :class="isCollapsed ? 'i-ri-arrow-down-s-line' : 'i-ri-arrow-up-s-line'" />
+  <component :is="as">
+    <Form.Root label-placement="left" label-width="auto">
+      <div class="gap-x-2 grid" :class="typeof gridCols === 'string' ? gridCols : ''">
+        <template v-for="item in visibleItems" :key="item.field">
+          <Form.Item v-bind="item" />
+        </template>
+        <div class="flex gap-x-2 items-start justify-end" :style="{ gridColumnStart: currentColumns }">
+          <NButton :loading="isResetLoading || isSearchLoading" class="w-80px" @click="executeReset">重置</NButton>
+          <NButton type="primary" :loading="isSearchLoading || isResetLoading" class="w-80px" @click="executeSearch">查询</NButton>
+          <div v-if="showCollapseButton" class="ml-2 mt-2 flex gap-1 cursor-pointer items-center" @click="toggleCollapse">
+            {{ isCollapsed ? '展开' : '收起' }}
+            <div :class="isCollapsed ? 'i-ri-arrow-down-s-line' : 'i-ri-arrow-up-s-line'" />
+          </div>
         </div>
       </div>
-    </div>
-  </Form.Root>
+    </Form.Root>
+  </component>
 </template>

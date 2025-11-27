@@ -16,4 +16,6 @@ export interface QueryFormProps {
   search?: (values: any) => void | Promise<any>
   /** 重置函数 */
   reset?: () => void | Promise<any>
+  /** 包裹的组件 默认 n-card */
+  as?: string | Component
 }

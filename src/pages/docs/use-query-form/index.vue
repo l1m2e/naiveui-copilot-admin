@@ -38,7 +38,7 @@ async function search(query: any) {
 
 <template>
   <n-card title="UseQueryForm Test">
-    <QueryForm ref="queryFormRef" :items="items" :search="search" />
+    <QueryForm ref="queryFormRef" :items="items" :search="search" as="div" />
 
     <n-divider />
     <h3 class="font-bold mb-2">Form Data:</h3>

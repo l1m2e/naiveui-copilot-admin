@@ -56,8 +56,8 @@ export default defineConfig({
       ],
       dts: 'src/types/auto-imports.d.ts',
       dirs: [
-        './src/composables',
-        './src/stores/**'
+        'src/composables/*/index.{ts,tsx}', // 导入子目录的 index.ts/tsx 文件
+        'src/stores/**'
       ],
       vueTemplate: true,
     }),
@@ -66,6 +66,7 @@ export default defineConfig({
     Components({
       resolvers: [NaiveUiResolver()],
       dts: 'src/types/components.d.ts',
+      include: [/\.vue$/, /\.tsx$/],
     }),
 
     // https://github.com/antfu/unocss
