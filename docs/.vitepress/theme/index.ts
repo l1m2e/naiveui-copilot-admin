@@ -1,5 +1,4 @@
 import type { EnhanceAppContext } from 'vitepress'
-import naive from 'naive-ui'
 import DefaultTheme from 'vitepress/theme'
 import { setupYupErrorMap } from '../../../src/utils/yup-error-map'
 import { registerYupExtensions } from '../../../src/utils/yup-extensions'
@@ -17,6 +16,5 @@ export default {
   Layout,
   enhanceApp({ app }: EnhanceAppContext) {
     app.component('demo-preview', DemoPreview)
-    app.use(naive)
   },
 }
