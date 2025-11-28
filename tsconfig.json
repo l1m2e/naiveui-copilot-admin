@@ -30,7 +30,9 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "*.d.ts"
+    "*.d.ts",
+    "docs/**/*.vue",
+    "docs/**/*.md"
   ],
   "exclude": [
     "dist",

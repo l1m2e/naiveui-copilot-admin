@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "*.css": "postcss"
+    "*.css": "css"
   },
 
   "css.lint.unknownAtRules": "ignore",

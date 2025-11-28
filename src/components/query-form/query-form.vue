@@ -88,7 +88,7 @@ defineExpose({
           <NButton type="primary" :loading="isSearchLoading || isResetLoading" class="w-80px" @click="executeSearch">查询</NButton>
           <div v-if="showCollapseButton" class="ml-2 mt-2 flex gap-1 cursor-pointer items-center" @click="toggleCollapse">
             {{ isCollapsed ? '展开' : '收起' }}
-            <div :class="isCollapsed ? 'i-ri-arrow-down-s-line' : 'i-ri-arrow-up-s-line'" />
+            <div :class="isCollapsed ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'" />
           </div>
         </div>
       </div>

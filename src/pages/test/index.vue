@@ -2,7 +2,7 @@
 definePage({
   meta: {
     title: '测试',
-    icon: 'i-ri-catalog',
+    icon: 'i-lucide-list',
     order: 2
   },
 })

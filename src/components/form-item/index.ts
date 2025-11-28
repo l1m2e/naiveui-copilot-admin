@@ -10,7 +10,7 @@ export type FormItemProps = {
   /** 表单默认值 */
   value?: any
   /** 表单验证 - 只接收 Yup schema */
-  rule?: yup.Schema
+  rule?: any
   /** 组件或者使用tsx返回一个虚拟dom */
   component?: ((form: any) => JSX.Element) | VNode | FromItemComponentType
   /** 组件属性 事件以 on 开头 */

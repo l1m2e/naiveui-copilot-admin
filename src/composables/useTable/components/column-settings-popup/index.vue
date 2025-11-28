@@ -56,7 +56,7 @@ defineExpose({
   <n-popover v-model:show="showDropdown" placement="bottom" trigger="click">
     <template #trigger>
       <n-button text>
-        <i class="i-ri-settings-3-line text-16px" />
+        <i class="i-lucide-settings text-16px" />
       </n-button>
     </template>
 
@@ -73,7 +73,7 @@ defineExpose({
         >
           <div class="flex items-center">
             <div class="drag-handle text-neutral-400 mr-8px flex cursor-move items-center">
-              <div class="i-ri-draggable text-16px" />
+              <div class="i-lucide-grip-vertical text-16px" />
             </div>
             <n-checkbox v-model:checked="col.visible">{{ col.title }}</n-checkbox>
           </div>
@@ -81,10 +81,10 @@ defineExpose({
           <div>
             <div class="ml-8px flex gap-4px items-center">
               <button class="pin-btn" :class="col.fixed === 'left' ? 'text-green-500!' : ''" @click="() => toggleFixed(col.key, 'left')">
-                <div class="i-ri-pushpin-line text-14px" />
+                <div class="i-lucide-pin text-14px" />
               </button>
               <button class="pin-btn" :class="col.fixed === 'right' ? 'text-green-500!' : ''" @click="() => toggleFixed(col.key, 'right')">
-                <div class="i-ri-pushpin-line text-14px rotate-270deg" />
+                <div class="i-lucide-pin text-14px rotate-270deg" />
               </button>
             </div>
           </div>

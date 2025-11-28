@@ -2,7 +2,7 @@
 definePage({
   meta: {
     title: '文档',
-    icon: 'i-ri-file-word-2-line',
+    icon: 'i-lucide-file-text',
     order: 5,
   },
 })

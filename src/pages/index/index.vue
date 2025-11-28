@@ -2,7 +2,7 @@
 definePage({
   meta: {
     title: '首页',
-    icon: 'i-ri-home-2-fill',
+    icon: 'i-lucide-home',
     order: 1,
   },
 })

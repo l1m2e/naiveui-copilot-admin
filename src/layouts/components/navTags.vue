@@ -65,10 +65,10 @@ function getContextMenuItems(item: Tags) {
     return []
   }
   return [
-    { label: '关闭当前', icon: 'i-ri-close-line', action: () => closeCurrent(item) },
-    { label: '关闭其他', icon: 'i-ri-close-circle-line', action: () => closeOthers(item) },
-    { label: '关闭左侧', icon: 'i-ri-arrow-left-circle-line', action: () => closeLeft(item) },
-    { label: '关闭右侧', icon: 'i-ri-arrow-right-circle-line', action: () => closeRight(item) },
+    { label: '关闭当前', icon: 'i-lucide-x', action: () => closeCurrent(item) },
+    { label: '关闭其他', icon: 'i-lucide-x-circle', action: () => closeOthers(item) },
+    { label: '关闭左侧', icon: 'i-lucide-arrow-left-circle', action: () => closeLeft(item) },
+    { label: '关闭右侧', icon: 'i-lucide-arrow-right-circle', action: () => closeRight(item) },
   ]
 }
 
@@ -96,7 +96,7 @@ const vars = useThemeVars()
         class="nav-arrow flex h-32px w-8 cursor-pointer transition-colors items-center left-0 justify-center absolute z-10 hover:bg-gray-100"
         @click="scrollToLeft"
       >
-        <div class="i-ri-arrow-left-s-line text-base" />
+        <div class="i-lucide-chevron-left text-base" />
       </button>
     </Transition>
 
@@ -120,7 +120,7 @@ const vars = useThemeVars()
                     : 'opacity-0 group-hover:opacity-100 hover:text-black hover:bg-gray-300',
                 ]" @click.stop="() => removeTag(item)"
               >
-                <div class="i-ri-close-line" />
+                <div class="i-lucide-x" />
               </div>
             </div>
           </div>
@@ -149,7 +149,7 @@ const vars = useThemeVars()
         class="nav-arrow flex h-32px w-8 cursor-pointer transition-colors items-center right-0 justify-center absolute z-10 hover:bg-gray-100"
         @click="scrollToRight"
       >
-        <div class="i-ri-arrow-right-s-line text-base" />
+        <div class="i-lucide-chevron-right text-base" />
       </button>
     </Transition>
   </div>

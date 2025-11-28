@@ -9,7 +9,7 @@ export interface UseFormInst extends FormInst {
   reset: () => void
 }
 
-export function useForm<T>() {
+export function useForm<T = Record<string, any>>() {
   const form = ref<T>({} as T)
   const formRef = ref<FormInst | null>(null)
   const { formItems, provideAutomaticCollectionSchemaKey } = useAutomaticCollectionSchema()
