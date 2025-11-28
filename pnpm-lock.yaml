@@ -79,9 +79,6 @@ importers:
       '@vue-macros/volar':
         specifier: ^3.0.0-beta.14
         version: 3.1.1(typescript@5.9.3)(vue-tsc@2.2.12(typescript@5.9.3))(vue@3.5.25(typescript@5.9.3))
-      '@vue/repl':
-        specifier: ^4.7.0
-        version: 4.7.0
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -1695,9 +1692,6 @@ packages:
 
   '@vue/reactivity@3.5.25':
     resolution: {integrity: sha512-5xfAypCQepv4Jog1U4zn8cZIcbKKFka3AgWHEFQeK65OW+Ys4XybP6z2kKgws4YB43KGpqp5D/K3go2UPPunLA==}
-
-  '@vue/repl@4.7.0':
-    resolution: {integrity: sha512-1veaAsfO6xYLblo8jr2hQDlegdPjaCZkchZuG7PRhC9zX0bN2aLenu2rT7AEPAXDXK0OXCsB2+WIUevOTyMvLg==}
 
   '@vue/runtime-core@3.5.25':
     resolution: {integrity: sha512-Z751v203YWwYzy460bzsYQISDfPjHTl+6Zzwo/a3CsAf+0ccEjQ8c+0CdX1WsumRTHeywvyUFtW6KvNukT/smA==}
@@ -5788,8 +5782,6 @@ snapshots:
   '@vue/reactivity@3.5.25':
     dependencies:
       '@vue/shared': 3.5.25
-
-  '@vue/repl@4.7.0': {}
 
   '@vue/runtime-core@3.5.25':
     dependencies:
