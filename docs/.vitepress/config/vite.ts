@@ -5,6 +5,7 @@ import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
+import llmstxt from 'vitepress-plugin-llms'
 
 export const viteConfig: UserConfig = {
   resolve: {
@@ -13,6 +14,9 @@ export const viteConfig: UserConfig = {
     },
   },
   plugins: [
+    // LLMs 文档生成插件
+    llmstxt(),
+
     // UnoCSS 插件 - 指定配置文件路径
     UnoCSS(fileURLToPath(new URL('../../../uno.config.ts', import.meta.url))),
 

@@ -10,13 +10,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     FormItem: typeof import('./../../src/components/form-item/form-item.vue')['default']
     FormItemGrid: typeof import('./../../src/components/form-item-grid/form-item-grid.vue')['default']
-    NAlert: typeof import('naive-ui')['NAlert']
     NButton: typeof import('naive-ui')['NButton']
-    NCard: typeof import('naive-ui')['NCard']
     NCheckbox: typeof import('naive-ui')['NCheckbox']
     NDivider: typeof import('naive-ui')['NDivider']
     NPopover: typeof import('naive-ui')['NPopover']
-    NSpace: typeof import('naive-ui')['NSpace']
     QueryForm: typeof import('./../../src/components/query-form/query-form.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
