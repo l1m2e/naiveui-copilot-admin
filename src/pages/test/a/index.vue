@@ -1,4 +1,5 @@
 <script lang="tsx" setup>
+import { COLUMN_SETTINGS_KEY } from '~/constants'
 import { fetchUserList } from './query'
 
 definePage({
@@ -43,6 +44,7 @@ const { Table, QueryForm } = useTable({
       fixed: 'right',
     },
   ],
+  columnSettings: COLUMN_SETTINGS_KEY.TEST_A,
 })
 </script>
 

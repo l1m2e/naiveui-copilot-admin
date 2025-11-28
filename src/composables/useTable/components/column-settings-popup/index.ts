@@ -6,4 +6,5 @@ export interface ColumnSettingsPopupProps<T> {
 
 export interface ColumnSettingsPopupEmits<T> {
   (e: 'confirm', columns: DataTableColumns<T>): void
+  (e: 'reset'): void
 }

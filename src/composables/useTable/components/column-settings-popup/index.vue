@@ -10,9 +10,14 @@ const emit = defineEmits<ColumnSettingsPopupEmits<T>>()
 const showDropdown = ref(false)
 const localColumns = ref<DataTableColumns<T>>([])
 
-watchImmediate(() => props.columns, (newColumns) => {
-  localColumns.value = cloneDeep(newColumns)
-}, { deep: true })
+// 使用 watch 监听 props.columns 的变化并深度克隆
+watch(
+  () => props.columns,
+  (newColumns) => {
+    localColumns.value = cloneDeep(newColumns)
+  },
+  { immediate: true, deep: true },
+)
 
 function toggleFixed(key: string | number, position: 'left' | 'right') {
   const col = localColumns.value.find(col => col.key === key)
@@ -27,7 +32,8 @@ function toggleFixed(key: string | number, position: 'left' | 'right') {
 }
 
 function resetColumnSettings() {
-  localColumns.value = cloneDeep(props.columns)
+  emit('reset')
+  showDropdown.value = false
 }
 
 function cancelColumnSettings() {
