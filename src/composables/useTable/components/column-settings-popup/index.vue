@@ -81,10 +81,10 @@ defineExpose({
           <div>
             <div class="ml-8px flex gap-4px items-center">
               <button class="pin-btn" :class="col.fixed === 'left' ? 'text-green-500!' : ''" @click="() => toggleFixed(col.key, 'left')">
-                <div class="i-lucide-pin text-14px" />
+                <div class="i-lucide-pin text-14px rotate-45deg" />
               </button>
               <button class="pin-btn" :class="col.fixed === 'right' ? 'text-green-500!' : ''" @click="() => toggleFixed(col.key, 'right')">
-                <div class="i-lucide-pin text-14px rotate-270deg" />
+                <div class="i-lucide-pin text-14px -rotate-45deg" />
               </button>
             </div>
           </div>

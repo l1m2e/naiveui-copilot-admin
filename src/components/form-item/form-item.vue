@@ -73,3 +73,14 @@ onBeforeUnmount(() => {
     </FormItem>
   </component>
 </template>
+
+<style scoped>
+:deep(.n-input),
+:deep(.n-input-number),
+:deep(.n-select),
+:deep(.n-date-picker),
+:deep(.n-time-picker),
+:deep(.n-cascader) {
+  width: 100%;
+}
+</style>
