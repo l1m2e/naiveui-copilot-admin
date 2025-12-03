@@ -2,7 +2,7 @@
 
 ## 简介
 
-Vitesse Lite 是一个基于 [Vitesse](https://github.com/antfu/vitesse) 和 [Naive UI](https://www.naiveui.com/) 的轻量级 Vue 3 项目模板。它提供了现代化的开发体验和丰富的功能。
+Dietary CMS Frontend 是一个面向后台管理系统和 CMS 应用的 Vue 3 前端开发框架。它基于 [Vitesse](https://github.com/antfu/vitesse) 和 [Naive UI](https://www.naiveui.com/)，提供了声明式的表单和表格管理解决方案，让你可以快速构建现代化的后台管理系统。
 
 ## 特性
 
@@ -24,8 +24,8 @@ Vitesse Lite 是一个基于 [Vitesse](https://github.com/antfu/vitesse) 和 [Na
 ### 克隆项目
 
 ```bash
-git clone https://github.com/your-repo/vitesse-lite.git
-cd vitesse-lite
+git clone <项目地址>
+cd diettary-cms-forntend
 ```
 
 ### 安装依赖
