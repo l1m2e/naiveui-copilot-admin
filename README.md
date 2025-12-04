@@ -1,86 +1,216 @@
-<p align='center'>
-  <img src='https://user-images.githubusercontent.com/11247099/111864893-a457fd00-899e-11eb-9f05-f4b88987541d.png' alt='Vitesse - Opinionated Vite Starter Template' width='600'/>
-</p>
+# Dietary CMS Frontend
 
-<h6 align='center'>
-<a href="https://vitesse-lite.netlify.app/">Live Demo</a>
-</h6>
+> 🚀 基于 Vue 3 + Vite + Naive UI 的现代化 CMS 前端开发框架
 
-<h5 align='center'>
-<b>Lightweight version of <a href="https://github.com/antfu/vitesse">Vitesse</a></b>
-</h5>
+一个面向后台管理系统和 CMS 应用的 Vue 3 前端开发框架，提供开箱即用的表单和表格解决方案。
 
-<br>
+## ✨ 核心特性
 
-<p align='center'>
-<b>English</b> | <a href="https://github.com/antfu-collective/vitesse-lite/blob/main/README.zh-CN.md">简体中文</a>
-<!-- Contributors: Thanks for geting interested, however we DON'T accept new transitions to the README, thanks. -->
-</p>
+### 🎯 声明式表单管理 (`useForm`)
+- **简洁的 API** - 通过配置数组快速创建表单
+- **Yup 集成** - 自动将 Yup schema 转换为 Naive UI 验证规则
+- **智能重置** - 根据组件类型自动选择正确的重置值
+- **22+ 组件支持** - 覆盖所有 Naive UI 表单组件
+- **异步验证** - 支持远程校验（如用户名唯一性检查）
+- **响应式布局** - 基于 Grid 的灵活布局系统
 
-## Features
+### 📊 集成表格管理 (`useTable`)
+- **查询表单集成** - 基于 `useForm` 的查询面板
+- **智能分页** - 自动处理分页逻辑
+- **排序&筛选** - 内置排序和筛选支持
+- **列配置持久化** - 支持列显示/隐藏、拖拽排序
+- **自动刷新** - 查询、排序、筛选自动触发数据刷新
 
-- ⚡️ [Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/), [ESBuild](https://github.com/evanw/esbuild) - born with fastness
+### ⚡️ 现代化开发体验
+- **[Vue 3](https://vuejs.org/)** + **[Vite](https://vitejs.dev/)** - 极速的开发和构建体验
+- **[Naive UI](https://www.naiveui.com/)** - 完整的 Vue 3 组件库
+- **[UnoCSS](https://unocss.dev/)** - 即时按需的原子化 CSS 引擎
+- **[TypeScript](https://www.typescriptlang.org/)** - 完整的类型支持
+- **[Pinia](https://pinia.vuejs.org/)** - 直观、类型安全的状态管理
+- **[VueUse](https://vueuse.org/)** - 实用的 Composition API 工具集
 
-- 🗂 [File based routing](./src/pages)
+### 📦 开箱即用
+- **文件路由** - 基于 `unplugin-vue-router` 的文件系统路由
+- **自动导入** - 组件、Composables、API 按需自动导入
+- **布局系统** - 支持多布局切换
+- **图标方案** - 基于 Iconify 的纯 CSS 图标（Lucide 图标集）
+- **单元测试** - Vitest + Vue Test Utils
 
-- 📦 [Components auto importing](./src/components)
+## 📚 快速开始
 
-- 🎨 [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+### 环境要求
+- Node.js >= 18
+- pnpm >= 10
 
-- 😃 Use icons from any icon sets in [Pure CSS](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
+### 安装依赖
+```bash
+pnpm install
+```
 
-- 🔥 Use the [new `<script setup>` style](https://github.com/vuejs/rfcs/pull/227)
+### 启动开发服务器
+```bash
+pnpm dev
+```
+访问 http://localhost:3333
 
-- ✅ Use [Vitest](http://vitest.dev/) for unit and components testing
+### 构建生产版本
+```bash
+pnpm build
+```
 
-- 🦾 TypeScript, of course
+### 预览生产版本
+```bash
+pnpm preview
+```
 
-- ☁️ Deploy on Netlify, zero-config
+### 运行测试
+```bash
+pnpm test
+```
 
-<br>
+### 启动文档
+```bash
+pnpm docs:dev
+```
+访问文档查看完整的 API 和示例
 
-See [Vitesse](https://github.com/antfu/vitesse) for full featureset.
+## 📖 技术栈
 
-## Dropped Features from [Vitesse](https://github.com/antfu/vitesse)
+### 核心框架
+- **Vue 3.5+** - 使用 `<script setup>` 语法
+- **Vite 6+** - 构建工具
+- **TypeScript 5+** - 类型系统
 
-- ~~i18n~~
-- ~~Layouts~~
-- ~~SSG~~
-- ~~PWA~~
-- ~~Markdown~~
+### UI 框架
+- **Naive UI 2.43+** - Vue 3 组件库
+- **UnoCSS** - 原子化 CSS 引擎
+- **Reka UI** - 无样式 UI 组件库（用于自定义组件）
 
-## Pre-packed
+### 路由与状态
+- **Vue Router 4** + **unplugin-vue-router** - 文件路由系统
+- **Pinia** + **pinia-plugin-persistedstate** - 状态管理与持久化
 
-### UI Frameworks
+### 表单与验证
+- **Yup** - Schema 验证
+- **自定义 useForm** - 声明式表单管理
 
-- [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+### 开发工具
+- **ESLint** + **@antfu/eslint-config** - 代码规范
+- **Vitest** + **@vue/test-utils** - 单元测试
+- **VitePress** - 文档生成
+- **simple-git-hooks** + **lint-staged** - Git 钩子
 
-### Icons
+## 🗂 项目结构
 
-- [Iconify](https://iconify.design) - use icons from any icon sets [🔍Icônes](https://icones.netlify.app/)
-- [Pure CSS Icons via UnoCSS](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
+```
+diettary-cms-forntend/
+├── src/
+│   ├── components/       # 公共组件
+│   │   ├── form-item/    # 表单项组件
+│   │   ├── form-item-grid/  # 表单网格布局
+│   │   └── query-form/   # 查询表单组件
+│   ├── composables/      # 组合式函数
+│   ├── constants/        # 常量定义
+│   ├── layouts/          # 布局组件
+│   ├── pages/            # 页面（文件路由）
+│   ├── router/           # 路由配置
+│   ├── stores/           # Pinia 状态管理
+│   ├── styles/           # 全局样式
+│   ├── types/            # TypeScript 类型定义
+│   ├── utils/            # 工具函数
+│   └── main.ts           # 应用入口
+├── docs/                 # VitePress 文档
+├── scripts/              # 脚本工具
+├── public/               # 静态资源
+└── package.json
+```
 
-### Plugins
+## 🎨 特色功能
 
-- [Vue Router](https://github.com/vuejs/vue-router)
-  - [`unplugin-vue-router`](https://github.com/posva/unplugin-vue-router) - file system based routing
-- [`unplugin-auto-import`](https://github.com/antfu/unplugin-auto-import) - Directly use Vue Composition API and others without importing
-- [`unplugin-vue-components`](https://github.com/antfu/unplugin-vue-components) - components auto import
-- [`unplugin-vue-macros`](https://github.com/sxzz/unplugin-vue-macros) - Explore and extend more macros and syntax sugar to Vue.
-- [VueUse](https://github.com/antfu/vueuse) - collection of useful composition APIs
+### 声明式表单示例
+```vue
+<script setup lang="ts">
+import { useForm } from '@/composables/useForm'
+import * as yup from 'yup'
 
-## Try it now!
+const { FormItems, formData, validate } = useForm({
+  items: [
+    {
+      label: '用户名',
+      path: 'username',
+      component: 'NInput',
+      schema: yup.string().required('请输入用户名')
+    },
+    {
+      label: '邮箱',
+      path: 'email',
+      component: 'NInput',
+      schema: yup.string().email('邮箱格式不正确').required()
+    }
+  ]
+})
 
-### GitHub Template
+async function handleSubmit() {
+  if (await validate()) {
+    console.log(formData)
+  }
+}
+</script>
+```
 
-[Create a repo from this template on GitHub](https://github.com/antfu-collective/vitesse-lite/generate).
+### 集成表格示例
+```vue
+<script setup lang="ts">
+import { useTable } from '@/composables/useTable'
 
-### Clone to local
+const { QueryForm, Table, getList } = useTable({
+  columns: [
+    { key: 'id', title: 'ID' },
+    { key: 'name', title: '名称' }
+  ],
+  queryItems: [
+    {
+      label: '搜索',
+      path: 'keyword',
+      component: 'NInput'
+    }
+  ],
+  async onFetchData({ query, pagination }) {
+    // 获取数据
+    return {
+      data: [],
+      total: 0
+    }
+  }
+})
+</script>
 
-If you prefer to do it manually with the cleaner git history
+<template>
+  <QueryForm />
+  <Table />
+</template>
+```
+
+## 📝 开发规范
+
+- 使用 ESLint 配置（@antfu/eslint-config）
+- 使用 TypeScript 严格模式
+- 遵循 Vue 3 Composition API 最佳实践
+- 使用 `<script setup>` 语法
+- 使用 UnoCSS 原子化 CSS
+
+## 🔧 其他脚本
 
 ```bash
-npx degit antfu-collective/vitesse-lite my-vitesse-app
-cd my-vitesse-app
-pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
+# 更新依赖到最新版本
+pnpm up
+
+# 类型检查
+pnpm typecheck
+
+# 代码检查
+pnpm lint
+
+# 构建文档
+pnpm docs:build
 ```
