@@ -19,4 +19,6 @@ export type FormItemProps = {
   slots?: Record<string, (form: any) => JSX.Element | string>
   /** 表单 */
   formItemProps?: NFormItemProps & { class?: string | string[] }
+  /**  */
+  class?: string
 }

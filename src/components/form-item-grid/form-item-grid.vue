@@ -6,10 +6,8 @@ const { items = [] } = defineProps<FormItemGridProps>()
 
 <template>
   <div class="gap-2 grid">
-    <form-item
-      v-for="(item, index) in items"
-      :key="index"
-      v-bind="item"
-    />
+    <div v-for="(item) in items" :key="item.field" :class="item.class">
+      <form-item v-bind="item" />
+    </div>
   </div>
 </template>
