@@ -13,7 +13,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   loadingBar.start()
   const { addTag } = useTagsStroe()
-  !to.meta?.noCache && addTag({ path: to.path, name: to.name as string, label: to.meta?.title as string || '' })
+  to.meta?.keepAlive !== false && addTag({ path: to.path, name: to.name as string, label: to.meta?.title as string || '' })
   next()
 })
 
