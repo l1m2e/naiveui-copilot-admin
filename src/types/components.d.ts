@@ -22,6 +22,7 @@ declare module 'vue' {
     NDataTable: typeof import('naive-ui')['NDataTable']
     NDatePicker: typeof import('naive-ui')['NDatePicker']
     NDivider: typeof import('naive-ui')['NDivider']
+    NEmpty: typeof import('naive-ui')['NEmpty']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NFormItemGi: typeof import('naive-ui')['NFormItemGi']
@@ -38,9 +39,13 @@ declare module 'vue' {
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NPopover: typeof import('naive-ui')['NPopover']
     NSpace: typeof import('naive-ui')['NSpace']
+    NTab: typeof import('naive-ui')['NTab']
+    NTabPane: typeof import('naive-ui')['NTabPane']
+    NTabs: typeof import('naive-ui')['NTabs']
     NTree: typeof import('naive-ui')['NTree']
     QueryForm: typeof import('./../components/query-form/query-form.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
+    RouterTabs: typeof import('./../components/router-tabs/index.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
   }
 }
