@@ -12,6 +12,9 @@
 - 适用场景：列表页面、数据展示、带查询的表格等
 - 参考文档：`.github/prompts/useTable.prompt.md`
 
+### 样式
+**重要** :系统安装了 unocss 优先使用 unocss 实现样式功能
+
 ---
 
 ## ESLint 自动修复规则
