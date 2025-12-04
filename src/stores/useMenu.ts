@@ -29,9 +29,15 @@ export const useMenuStore = defineStore('menu', () => {
   const permissionTree = ref<PermissionTreeNode[]>([])
 
   function buildMenuFromRoutes(routes: readonly RouteRecordRaw[]) {
+    // 构建包含所有节点的扁平数据（用于权限树）
+    const allFlatOptions = buildAllFlatOptions(routes)
+    // 构建过滤后的扁平菜单数据
     flatMenuOptions.value = buildFlatMenuOptions(routes)
+    // 从过滤后的数据构建菜单树
     menuTree.value = buildMenuTree(flatMenuOptions.value)
-    permissionTree.value = buildPermissionTree(menuTree.value)
+    // 从完整的扁平数据构建权限树，避免 hideInMenu 过滤掉权限
+    const allMenuTree = buildMenuTree(allFlatOptions)
+    permissionTree.value = buildPermissionTree(allMenuTree)
   }
 
   return {
@@ -42,7 +48,38 @@ export const useMenuStore = defineStore('menu', () => {
   }
 })
 
-/** 从路由构建扁平菜单 */
+/** 从路由构建所有扁平菜单（包括隐藏的，用于权限树） */
+function buildAllFlatOptions(
+  routes: readonly RouteRecordRaw[],
+  parentPath = ''
+): AppMenuOption[] {
+  return routes.flatMap((route) => {
+    const currentPath = resolvePath(parentPath, route.path)
+    const { meta, children: routeChildren } = route
+    const { title } = meta ?? {}
+
+    const children = routeChildren
+      ? buildAllFlatOptions(routeChildren, currentPath)
+      : []
+
+    // 只过滤掉非菜单项，保留所有有标题的项（包括 hideInMenu 的）
+    const isNotMenu = meta?.isMenu === false
+
+    if (!title || isNotMenu) return children
+
+    return [
+      {
+        label: String(title),
+        key: String(route.name ?? currentPath),
+        path: currentPath,
+        mate: meta,
+      },
+      ...children,
+    ]
+  })
+}
+
+/** 从路由构建扁平菜单（过滤掉隐藏的，用于菜单展示） */
 function buildFlatMenuOptions(
   routes: readonly RouteRecordRaw[],
   parentPath = ''
