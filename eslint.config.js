@@ -11,7 +11,7 @@ export default antfu(
   {
     rules: {
       'no-console': 'warn',
-      'camelcase': 'error',
+      'camelcase': ['error', { properties: 'never' }],
       'comma-dangle': 'off',
       '@stylistic/comma-dangle': 'off',
       'antfu/if-newline': 'off',
