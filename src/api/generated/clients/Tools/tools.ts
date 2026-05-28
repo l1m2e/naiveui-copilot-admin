@@ -3,10 +3,10 @@
  * Do not edit manually.
  */
 
-import { getTools } from './getTools'
-import { getToolsToolId } from './getToolsToolId'
-import { postToolsToolIdExecute } from './postToolsToolIdExecute'
+import { getApiTools } from './getApiTools'
+import { getApiToolsToolId } from './getApiToolsToolId'
+import { postApiToolsToolIdExecute } from './postApiToolsToolIdExecute'
 
 export function tools() {
-  return { getTools, getToolsToolId, postToolsToolIdExecute }
+  return { getApiTools, getApiToolsToolId, postApiToolsToolIdExecute }
 }

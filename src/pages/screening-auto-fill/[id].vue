@@ -1,9 +1,11 @@
 <script lang="tsx" setup>
-import { getScreeningAutoFillFormsId, postScreeningAutoFillForms, putScreeningAutoFillFormsId } from '~/api/generated'
+import { getAdminScreeningAutoFillFormsId, postAdminScreeningAutoFillForms, putAdminScreeningAutoFillFormsId } from '~/api/generated'
+import MarkdownEditor from '~/components/markdown-editor/index.vue'
 
 definePage({
   meta: {
     title: '筛评填写详情',
+    isMenu: false,
   },
 })
 
@@ -39,7 +41,7 @@ const rules = {
 async function loadForm() {
   if (isNew.value) return
   try {
-    const form = await getScreeningAutoFillFormsId(id.value)
+    const form = await getAdminScreeningAutoFillFormsId(id.value)
     formValue.value = {
       name: form.name,
       formKey: form.formKey,
@@ -70,7 +72,7 @@ async function handleSubmit() {
 
   try {
     if (isNew.value) {
-      await postScreeningAutoFillForms({
+      await postAdminScreeningAutoFillForms({
         name: formValue.value.name,
         formKey: formValue.value.formKey,
         prompt: formValue.value.prompt,
@@ -79,7 +81,7 @@ async function handleSubmit() {
       message.success('创建成功')
     }
     else {
-      await putScreeningAutoFillFormsId(id.value, {
+      await putAdminScreeningAutoFillFormsId(id.value, {
         name: formValue.value.name,
         formKey: formValue.value.formKey,
         prompt: formValue.value.prompt,
@@ -99,9 +101,6 @@ loadForm()
 
 <template>
   <div class="space-y-4">
-    <n-button quaternary @click="router.back()">
-      返回
-    </n-button>
     <n-card :title="pageTitle">
       <n-form
         ref="formRef"
@@ -118,11 +117,10 @@ loadForm()
           <n-input v-model:value="formValue.formKey" placeholder="请输入表单 Key，需唯一" :disabled="!isNew" />
         </n-form-item>
         <n-form-item label="提示词" path="prompt">
-          <n-input
-            v-model:value="formValue.prompt"
-            type="textarea"
-            :rows="6"
+          <MarkdownEditor
+            v-model="formValue.prompt"
             placeholder="请输入 AI 自动填写的提示词"
+            :min-height="200"
           />
         </n-form-item>
         <n-form-item label="Schema 校验" path="schema">

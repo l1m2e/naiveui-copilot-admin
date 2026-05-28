@@ -3,14 +3,14 @@
  * Do not edit manually.
  */
 
-import { getEditorBuilderInfrastructure } from './getEditorBuilderInfrastructure'
-import { getEditorBuilderRegistries } from './getEditorBuilderRegistries'
-import { getEditorBuilderRegistriesRegistryIdPopular } from './getEditorBuilderRegistriesRegistryIdPopular'
-import { getEditorBuilderRegistriesRegistryIdPreview } from './getEditorBuilderRegistriesRegistryIdPreview'
-import { getEditorBuilderRegistriesRegistryIdSearch } from './getEditorBuilderRegistriesRegistryIdSearch'
-import { getEditorBuilderSettings } from './getEditorBuilderSettings'
-import { postEditorBuilderRegistriesRegistryIdInstall } from './postEditorBuilderRegistriesRegistryIdInstall'
+import { getApiEditorBuilderInfrastructure } from './getApiEditorBuilderInfrastructure'
+import { getApiEditorBuilderRegistries } from './getApiEditorBuilderRegistries'
+import { getApiEditorBuilderRegistriesRegistryIdPopular } from './getApiEditorBuilderRegistriesRegistryIdPopular'
+import { getApiEditorBuilderRegistriesRegistryIdPreview } from './getApiEditorBuilderRegistriesRegistryIdPreview'
+import { getApiEditorBuilderRegistriesRegistryIdSearch } from './getApiEditorBuilderRegistriesRegistryIdSearch'
+import { getApiEditorBuilderSettings } from './getApiEditorBuilderSettings'
+import { postApiEditorBuilderRegistriesRegistryIdInstall } from './postApiEditorBuilderRegistriesRegistryIdInstall'
 
 export function editor() {
-  return { getEditorBuilderSettings, getEditorBuilderInfrastructure, getEditorBuilderRegistries, getEditorBuilderRegistriesRegistryIdSearch, getEditorBuilderRegistriesRegistryIdPopular, getEditorBuilderRegistriesRegistryIdPreview, postEditorBuilderRegistriesRegistryIdInstall }
+  return { getApiEditorBuilderSettings, getApiEditorBuilderInfrastructure, getApiEditorBuilderRegistries, getApiEditorBuilderRegistriesRegistryIdSearch, getApiEditorBuilderRegistriesRegistryIdPopular, getApiEditorBuilderRegistriesRegistryIdPreview, postApiEditorBuilderRegistriesRegistryIdInstall }
 }

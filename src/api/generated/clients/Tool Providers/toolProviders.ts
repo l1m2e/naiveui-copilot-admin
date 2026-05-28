@@ -3,11 +3,11 @@
  * Do not edit manually.
  */
 
-import { getToolProviders } from './getToolProviders'
-import { getToolProvidersProviderIdToolkits } from './getToolProvidersProviderIdToolkits'
-import { getToolProvidersProviderIdTools } from './getToolProvidersProviderIdTools'
-import { getToolProvidersProviderIdToolsToolSlugSchema } from './getToolProvidersProviderIdToolsToolSlugSchema'
+import { getApiToolProviders } from './getApiToolProviders'
+import { getApiToolProvidersProviderIdToolkits } from './getApiToolProvidersProviderIdToolkits'
+import { getApiToolProvidersProviderIdTools } from './getApiToolProvidersProviderIdTools'
+import { getApiToolProvidersProviderIdToolsToolSlugSchema } from './getApiToolProvidersProviderIdToolsToolSlugSchema'
 
 export function toolProviders() {
-  return { getToolProviders, getToolProvidersProviderIdToolkits, getToolProvidersProviderIdTools, getToolProvidersProviderIdToolsToolSlugSchema }
+  return { getApiToolProviders, getApiToolProvidersProviderIdToolkits, getApiToolProvidersProviderIdTools, getApiToolProvidersProviderIdToolsToolSlugSchema }
 }

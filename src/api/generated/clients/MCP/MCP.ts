@@ -3,15 +3,15 @@
  * Do not edit manually.
  */
 
-import { getMcpServerIdResources } from './getMcpServerIdResources'
-import { getMcpServerIdTools } from './getMcpServerIdTools'
-import { getMcpServerIdToolsToolId } from './getMcpServerIdToolsToolId'
-import { getMcpV0Servers } from './getMcpV0Servers'
-import { getMcpV0ServersId } from './getMcpV0ServersId'
-import { postMcpServerIdMessages } from './postMcpServerIdMessages'
-import { postMcpServerIdResourcesRead } from './postMcpServerIdResourcesRead'
-import { postMcpServerIdToolsToolIdExecute } from './postMcpServerIdToolsToolIdExecute'
+import { getApiMcpServerIdResources } from './getApiMcpServerIdResources'
+import { getApiMcpServerIdTools } from './getApiMcpServerIdTools'
+import { getApiMcpServerIdToolsToolId } from './getApiMcpServerIdToolsToolId'
+import { getApiMcpV0Servers } from './getApiMcpV0Servers'
+import { getApiMcpV0ServersId } from './getApiMcpV0ServersId'
+import { postApiMcpServerIdMessages } from './postApiMcpServerIdMessages'
+import { postApiMcpServerIdResourcesRead } from './postApiMcpServerIdResourcesRead'
+import { postApiMcpServerIdToolsToolIdExecute } from './postApiMcpServerIdToolsToolIdExecute'
 
 export function MCP() {
-  return { getMcpV0Servers, getMcpV0ServersId, getMcpServerIdTools, getMcpServerIdToolsToolId, postMcpServerIdToolsToolIdExecute, getMcpServerIdResources, postMcpServerIdResourcesRead, postMcpServerIdMessages }
+  return { getApiMcpV0Servers, getApiMcpV0ServersId, getApiMcpServerIdTools, getApiMcpServerIdToolsToolId, postApiMcpServerIdToolsToolIdExecute, getApiMcpServerIdResources, postApiMcpServerIdResourcesRead, postApiMcpServerIdMessages }
 }

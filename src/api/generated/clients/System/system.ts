@@ -3,9 +3,9 @@
  * Do not edit manually.
  */
 
-import { getSystemApiSchema } from './getSystemApiSchema'
-import { getSystemPackages } from './getSystemPackages'
+import { getApiSystemApiSchema } from './getApiSystemApiSchema'
+import { getApiSystemPackages } from './getApiSystemPackages'
 
 export function system() {
-  return { getSystemPackages, getSystemApiSchema }
+  return { getApiSystemPackages, getApiSystemApiSchema }
 }

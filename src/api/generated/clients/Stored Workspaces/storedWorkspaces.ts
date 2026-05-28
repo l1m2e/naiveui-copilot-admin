@@ -3,12 +3,12 @@
  * Do not edit manually.
  */
 
-import { deleteStoredWorkspacesStoredWorkspaceId } from './deleteStoredWorkspacesStoredWorkspaceId'
-import { getStoredWorkspaces } from './getStoredWorkspaces'
-import { getStoredWorkspacesStoredWorkspaceId } from './getStoredWorkspacesStoredWorkspaceId'
-import { patchStoredWorkspacesStoredWorkspaceId } from './patchStoredWorkspacesStoredWorkspaceId'
-import { postStoredWorkspaces } from './postStoredWorkspaces'
+import { deleteApiStoredWorkspacesStoredWorkspaceId } from './deleteApiStoredWorkspacesStoredWorkspaceId'
+import { getApiStoredWorkspaces } from './getApiStoredWorkspaces'
+import { getApiStoredWorkspacesStoredWorkspaceId } from './getApiStoredWorkspacesStoredWorkspaceId'
+import { patchApiStoredWorkspacesStoredWorkspaceId } from './patchApiStoredWorkspacesStoredWorkspaceId'
+import { postApiStoredWorkspaces } from './postApiStoredWorkspaces'
 
 export function storedWorkspaces() {
-  return { getStoredWorkspaces, postStoredWorkspaces, getStoredWorkspacesStoredWorkspaceId, patchStoredWorkspacesStoredWorkspaceId, deleteStoredWorkspacesStoredWorkspaceId }
+  return { getApiStoredWorkspaces, postApiStoredWorkspaces, getApiStoredWorkspacesStoredWorkspaceId, patchApiStoredWorkspacesStoredWorkspaceId, deleteApiStoredWorkspacesStoredWorkspaceId }
 }

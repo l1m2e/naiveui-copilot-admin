@@ -3,12 +3,12 @@
  * Do not edit manually.
  */
 
-import { deleteScreeningAutoFillFormsId } from './deleteScreeningAutoFillFormsId'
-import { getScreeningAutoFillForms } from './getScreeningAutoFillForms'
-import { getScreeningAutoFillFormsId } from './getScreeningAutoFillFormsId'
-import { postScreeningAutoFillForms } from './postScreeningAutoFillForms'
-import { putScreeningAutoFillFormsId } from './putScreeningAutoFillFormsId'
+import { deleteAdminScreeningAutoFillFormsId } from './deleteAdminScreeningAutoFillFormsId'
+import { getAdminScreeningAutoFillForms } from './getAdminScreeningAutoFillForms'
+import { getAdminScreeningAutoFillFormsId } from './getAdminScreeningAutoFillFormsId'
+import { postAdminScreeningAutoFillForms } from './postAdminScreeningAutoFillForms'
+import { putAdminScreeningAutoFillFormsId } from './putAdminScreeningAutoFillFormsId'
 
 export function adminScreeningAutoFill() {
-  return { getScreeningAutoFillForms, postScreeningAutoFillForms, getScreeningAutoFillFormsId, putScreeningAutoFillFormsId, deleteScreeningAutoFillFormsId }
+  return { getAdminScreeningAutoFillForms, postAdminScreeningAutoFillForms, getAdminScreeningAutoFillFormsId, putAdminScreeningAutoFillFormsId, deleteAdminScreeningAutoFillFormsId }
 }

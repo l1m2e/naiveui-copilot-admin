@@ -3,12 +3,12 @@
  * Do not edit manually.
  */
 
-import { deleteStoredPromptBlocksStoredPromptBlockId } from './deleteStoredPromptBlocksStoredPromptBlockId'
-import { getStoredPromptBlocks } from './getStoredPromptBlocks'
-import { getStoredPromptBlocksStoredPromptBlockId } from './getStoredPromptBlocksStoredPromptBlockId'
-import { patchStoredPromptBlocksStoredPromptBlockId } from './patchStoredPromptBlocksStoredPromptBlockId'
-import { postStoredPromptBlocks } from './postStoredPromptBlocks'
+import { deleteApiStoredPromptBlocksStoredPromptBlockId } from './deleteApiStoredPromptBlocksStoredPromptBlockId'
+import { getApiStoredPromptBlocks } from './getApiStoredPromptBlocks'
+import { getApiStoredPromptBlocksStoredPromptBlockId } from './getApiStoredPromptBlocksStoredPromptBlockId'
+import { patchApiStoredPromptBlocksStoredPromptBlockId } from './patchApiStoredPromptBlocksStoredPromptBlockId'
+import { postApiStoredPromptBlocks } from './postApiStoredPromptBlocks'
 
 export function storedPromptBlocks() {
-  return { getStoredPromptBlocks, postStoredPromptBlocks, getStoredPromptBlocksStoredPromptBlockId, patchStoredPromptBlocksStoredPromptBlockId, deleteStoredPromptBlocksStoredPromptBlockId }
+  return { getApiStoredPromptBlocks, postApiStoredPromptBlocks, getApiStoredPromptBlocksStoredPromptBlockId, patchApiStoredPromptBlocksStoredPromptBlockId, deleteApiStoredPromptBlocksStoredPromptBlockId }
 }

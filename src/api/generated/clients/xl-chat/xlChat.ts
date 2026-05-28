@@ -3,8 +3,8 @@
  * Do not edit manually.
  */
 
-import { postDiagnosisAgentTfId } from './postDiagnosisAgentTfId'
+import { postXlDiagnosisAgentTfId } from './postXlDiagnosisAgentTfId'
 
 export function xlChat() {
-  return { postDiagnosisAgentTfId }
+  return { postXlDiagnosisAgentTfId }
 }

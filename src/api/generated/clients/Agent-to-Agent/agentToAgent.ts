@@ -3,9 +3,9 @@
  * Do not edit manually.
  */
 
-import { getWellKnownAgentIdAgentCardJson } from './get/wellKnownAgentIdAgentCard/json'
-import { postA2AAgentId } from './postA2AAgentId'
+import { getApiWellKnownAgentIdAgentCardJson } from './getApi/wellKnownAgentIdAgentCard/json'
+import { postApiA2AAgentId } from './postApiA2AAgentId'
 
 export function agentToAgent() {
-  return { getWellKnownAgentIdAgentCardJson, postA2AAgentId }
+  return { getApiWellKnownAgentIdAgentCardJson, postApiA2AAgentId }
 }

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { postAuthCredentialsSignIn } from '~/api/generated/clients/Auth/postAuthCredentialsSignIn'
+import { postApiAuthCredentialsSignIn } from '~/api/generated/index'
 
 export const useAuthStore = defineStore('auth', () => {
   const token = ref(sessionStorage.getItem('mastra-token') ?? '')
@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function validateToken(t: string) {
     try {
-      await postAuthCredentialsSignIn({
+      await postApiAuthCredentialsSignIn({
         email: 'admin@admin.com',
         password: t,
       })

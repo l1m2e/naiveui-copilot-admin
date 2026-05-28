@@ -3,14 +3,14 @@
  * Do not edit manually.
  */
 
-import { deleteV1ConversationsConversationId } from './deleteV1ConversationsConversationId'
-import { deleteV1ResponsesResponseId } from './deleteV1ResponsesResponseId'
-import { getV1ConversationsConversationId } from './getV1ConversationsConversationId'
-import { getV1ConversationsConversationIdItems } from './getV1ConversationsConversationIdItems'
-import { getV1ResponsesResponseId } from './getV1ResponsesResponseId'
-import { postV1Conversations } from './postV1Conversations'
-import { postV1Responses } from './postV1Responses'
+import { deleteApiV1ConversationsConversationId } from './deleteApiV1ConversationsConversationId'
+import { deleteApiV1ResponsesResponseId } from './deleteApiV1ResponsesResponseId'
+import { getApiV1ConversationsConversationId } from './getApiV1ConversationsConversationId'
+import { getApiV1ConversationsConversationIdItems } from './getApiV1ConversationsConversationIdItems'
+import { getApiV1ResponsesResponseId } from './getApiV1ResponsesResponseId'
+import { postApiV1Conversations } from './postApiV1Conversations'
+import { postApiV1Responses } from './postApiV1Responses'
 
 export function responses() {
-  return { postV1Responses, getV1ResponsesResponseId, deleteV1ResponsesResponseId, postV1Conversations, getV1ConversationsConversationId, deleteV1ConversationsConversationId, getV1ConversationsConversationIdItems }
+  return { postApiV1Responses, getApiV1ResponsesResponseId, deleteApiV1ResponsesResponseId, postApiV1Conversations, getApiV1ConversationsConversationId, deleteApiV1ConversationsConversationId, getApiV1ConversationsConversationIdItems }
 }

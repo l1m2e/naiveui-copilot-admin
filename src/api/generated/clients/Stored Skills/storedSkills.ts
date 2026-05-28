@@ -3,15 +3,15 @@
  * Do not edit manually.
  */
 
-import { deleteStoredSkillsStoredSkillId } from './deleteStoredSkillsStoredSkillId'
-import { deleteStoredSkillsStoredSkillIdFavorite } from './deleteStoredSkillsStoredSkillIdFavorite'
-import { getStoredSkills } from './getStoredSkills'
-import { getStoredSkillsStoredSkillId } from './getStoredSkillsStoredSkillId'
-import { patchStoredSkillsStoredSkillId } from './patchStoredSkillsStoredSkillId'
-import { postStoredSkills } from './postStoredSkills'
-import { postStoredSkillsStoredSkillIdPublish } from './postStoredSkillsStoredSkillIdPublish'
-import { putStoredSkillsStoredSkillIdFavorite } from './putStoredSkillsStoredSkillIdFavorite'
+import { deleteApiStoredSkillsStoredSkillId } from './deleteApiStoredSkillsStoredSkillId'
+import { deleteApiStoredSkillsStoredSkillIdFavorite } from './deleteApiStoredSkillsStoredSkillIdFavorite'
+import { getApiStoredSkills } from './getApiStoredSkills'
+import { getApiStoredSkillsStoredSkillId } from './getApiStoredSkillsStoredSkillId'
+import { patchApiStoredSkillsStoredSkillId } from './patchApiStoredSkillsStoredSkillId'
+import { postApiStoredSkills } from './postApiStoredSkills'
+import { postApiStoredSkillsStoredSkillIdPublish } from './postApiStoredSkillsStoredSkillIdPublish'
+import { putApiStoredSkillsStoredSkillIdFavorite } from './putApiStoredSkillsStoredSkillIdFavorite'
 
 export function storedSkills() {
-  return { getStoredSkills, postStoredSkills, getStoredSkillsStoredSkillId, patchStoredSkillsStoredSkillId, deleteStoredSkillsStoredSkillId, postStoredSkillsStoredSkillIdPublish, putStoredSkillsStoredSkillIdFavorite, deleteStoredSkillsStoredSkillIdFavorite }
+  return { getApiStoredSkills, postApiStoredSkills, getApiStoredSkillsStoredSkillId, patchApiStoredSkillsStoredSkillId, deleteApiStoredSkillsStoredSkillId, postApiStoredSkillsStoredSkillIdPublish, putApiStoredSkillsStoredSkillIdFavorite, deleteApiStoredSkillsStoredSkillIdFavorite }
 }

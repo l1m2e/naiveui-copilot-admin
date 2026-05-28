@@ -3,12 +3,12 @@
  * Do not edit manually.
  */
 
-import { deleteStoredScorersStoredScorerId } from './deleteStoredScorersStoredScorerId'
-import { getStoredScorers } from './getStoredScorers'
-import { getStoredScorersStoredScorerId } from './getStoredScorersStoredScorerId'
-import { patchStoredScorersStoredScorerId } from './patchStoredScorersStoredScorerId'
-import { postStoredScorers } from './postStoredScorers'
+import { deleteApiStoredScorersStoredScorerId } from './deleteApiStoredScorersStoredScorerId'
+import { getApiStoredScorers } from './getApiStoredScorers'
+import { getApiStoredScorersStoredScorerId } from './getApiStoredScorersStoredScorerId'
+import { patchApiStoredScorersStoredScorerId } from './patchApiStoredScorersStoredScorerId'
+import { postApiStoredScorers } from './postApiStoredScorers'
 
 export function storedScorers() {
-  return { getStoredScorers, postStoredScorers, getStoredScorersStoredScorerId, patchStoredScorersStoredScorerId, deleteStoredScorersStoredScorerId }
+  return { getApiStoredScorers, postApiStoredScorers, getApiStoredScorersStoredScorerId, patchApiStoredScorersStoredScorerId, deleteApiStoredScorersStoredScorerId }
 }

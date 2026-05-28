@@ -1,0 +1,29 @@
+/* Markdown Editor (TipTap) — github-markdown-css 之外的补充样式 */
+.markdown-editor .tiptap {
+  @apply outline-none;
+  min-height: inherit;
+}
+
+.markdown-editor .tiptap:empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  @apply pointer-events-none h-0 text-gray-400;
+}
+
+/* 重置 markdown-body 在编辑器中的首尾间距 */
+.markdown-editor .markdown-body > :first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-editor .markdown-body > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* 编辑器内确保列表符号可见 */
+.markdown-editor .markdown-body ul {
+  list-style: disc;
+}
+
+.markdown-editor .markdown-body ol {
+  list-style: decimal;
+}

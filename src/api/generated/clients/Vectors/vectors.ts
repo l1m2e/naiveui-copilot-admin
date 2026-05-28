@@ -3,15 +3,15 @@
  * Do not edit manually.
  */
 
-import { deleteVectorVectorNameIndexesIndexName } from './deleteVectorVectorNameIndexesIndexName'
-import { getEmbedders } from './getEmbedders'
-import { getVectors } from './getVectors'
-import { getVectorVectorNameIndexes } from './getVectorVectorNameIndexes'
-import { getVectorVectorNameIndexesIndexName } from './getVectorVectorNameIndexesIndexName'
-import { postVectorVectorNameCreateIndex } from './postVectorVectorNameCreateIndex'
-import { postVectorVectorNameQuery } from './postVectorVectorNameQuery'
-import { postVectorVectorNameUpsert } from './postVectorVectorNameUpsert'
+import { deleteApiVectorVectorNameIndexesIndexName } from './deleteApiVectorVectorNameIndexesIndexName'
+import { getApiEmbedders } from './getApiEmbedders'
+import { getApiVectors } from './getApiVectors'
+import { getApiVectorVectorNameIndexes } from './getApiVectorVectorNameIndexes'
+import { getApiVectorVectorNameIndexesIndexName } from './getApiVectorVectorNameIndexesIndexName'
+import { postApiVectorVectorNameCreateIndex } from './postApiVectorVectorNameCreateIndex'
+import { postApiVectorVectorNameQuery } from './postApiVectorVectorNameQuery'
+import { postApiVectorVectorNameUpsert } from './postApiVectorVectorNameUpsert'
 
 export function vectors() {
-  return { postVectorVectorNameUpsert, postVectorVectorNameCreateIndex, postVectorVectorNameQuery, getVectorVectorNameIndexes, getVectorVectorNameIndexesIndexName, deleteVectorVectorNameIndexesIndexName, getVectors, getEmbedders }
+  return { postApiVectorVectorNameUpsert, postApiVectorVectorNameCreateIndex, postApiVectorVectorNameQuery, getApiVectorVectorNameIndexes, getApiVectorVectorNameIndexesIndexName, deleteApiVectorVectorNameIndexesIndexName, getApiVectors, getApiEmbedders }
 }

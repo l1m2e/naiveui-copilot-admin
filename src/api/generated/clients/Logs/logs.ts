@@ -3,10 +3,10 @@
  * Do not edit manually.
  */
 
-import { getLogs } from './getLogs'
-import { getLogsRunId } from './getLogsRunId'
-import { getLogsTransports } from './getLogsTransports'
+import { getApiLogs } from './getApiLogs'
+import { getApiLogsRunId } from './getApiLogsRunId'
+import { getApiLogsTransports } from './getApiLogsTransports'
 
 export function logs() {
-  return { getLogsTransports, getLogs, getLogsRunId }
+  return { getApiLogsTransports, getApiLogs, getApiLogsRunId }
 }

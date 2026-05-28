@@ -3,9 +3,9 @@
  * Do not edit manually.
  */
 
-import { getProcessorProviders } from './getProcessorProviders'
-import { getProcessorProvidersProviderId } from './getProcessorProvidersProviderId'
+import { getApiProcessorProviders } from './getApiProcessorProviders'
+import { getApiProcessorProvidersProviderId } from './getApiProcessorProvidersProviderId'
 
 export function processorProviders() {
-  return { getProcessorProviders, getProcessorProvidersProviderId }
+  return { getApiProcessorProviders, getApiProcessorProvidersProviderId }
 }

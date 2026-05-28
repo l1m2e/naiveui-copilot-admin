@@ -3,15 +3,15 @@
  * Do not edit manually.
  */
 
-import { deleteStoredAgentsStoredAgentId } from './deleteStoredAgentsStoredAgentId'
-import { deleteStoredAgentsStoredAgentIdFavorite } from './deleteStoredAgentsStoredAgentIdFavorite'
-import { getStoredAgents } from './getStoredAgents'
-import { getStoredAgentsStoredAgentId } from './getStoredAgentsStoredAgentId'
-import { patchStoredAgentsStoredAgentId } from './patchStoredAgentsStoredAgentId'
-import { postStoredAgents } from './postStoredAgents'
-import { postStoredAgentsPreviewInstructions } from './postStoredAgentsPreviewInstructions'
-import { putStoredAgentsStoredAgentIdFavorite } from './putStoredAgentsStoredAgentIdFavorite'
+import { deleteApiStoredAgentsStoredAgentId } from './deleteApiStoredAgentsStoredAgentId'
+import { deleteApiStoredAgentsStoredAgentIdFavorite } from './deleteApiStoredAgentsStoredAgentIdFavorite'
+import { getApiStoredAgents } from './getApiStoredAgents'
+import { getApiStoredAgentsStoredAgentId } from './getApiStoredAgentsStoredAgentId'
+import { patchApiStoredAgentsStoredAgentId } from './patchApiStoredAgentsStoredAgentId'
+import { postApiStoredAgents } from './postApiStoredAgents'
+import { postApiStoredAgentsPreviewInstructions } from './postApiStoredAgentsPreviewInstructions'
+import { putApiStoredAgentsStoredAgentIdFavorite } from './putApiStoredAgentsStoredAgentIdFavorite'
 
 export function storedAgents() {
-  return { getStoredAgents, postStoredAgents, postStoredAgentsPreviewInstructions, getStoredAgentsStoredAgentId, patchStoredAgentsStoredAgentId, deleteStoredAgentsStoredAgentId, putStoredAgentsStoredAgentIdFavorite, deleteStoredAgentsStoredAgentIdFavorite }
+  return { getApiStoredAgents, postApiStoredAgents, postApiStoredAgentsPreviewInstructions, getApiStoredAgentsStoredAgentId, patchApiStoredAgentsStoredAgentId, deleteApiStoredAgentsStoredAgentId, putApiStoredAgentsStoredAgentIdFavorite, deleteApiStoredAgentsStoredAgentIdFavorite }
 }

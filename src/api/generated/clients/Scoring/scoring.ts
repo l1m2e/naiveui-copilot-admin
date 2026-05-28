@@ -3,13 +3,13 @@
  * Do not edit manually.
  */
 
-import { getScoresEntityEntityTypeEntityId } from './getScoresEntityEntityTypeEntityId'
-import { getScoresRunRunId } from './getScoresRunRunId'
-import { getScoresScorers } from './getScoresScorers'
-import { getScoresScorerScorerId } from './getScoresScorerScorerId'
-import { getScoresScorersScorerId } from './getScoresScorersScorerId'
-import { postScores } from './postScores'
+import { getApiScoresEntityEntityTypeEntityId } from './getApiScoresEntityEntityTypeEntityId'
+import { getApiScoresRunRunId } from './getApiScoresRunRunId'
+import { getApiScoresScorers } from './getApiScoresScorers'
+import { getApiScoresScorerScorerId } from './getApiScoresScorerScorerId'
+import { getApiScoresScorersScorerId } from './getApiScoresScorersScorerId'
+import { postApiScores } from './postApiScores'
 
 export function scoring() {
-  return { getScoresScorers, getScoresScorersScorerId, getScoresRunRunId, getScoresScorerScorerId, getScoresEntityEntityTypeEntityId, postScores }
+  return { getApiScoresScorers, getApiScoresScorersScorerId, getApiScoresRunRunId, getApiScoresScorerScorerId, getApiScoresEntityEntityTypeEntityId, postApiScores }
 }

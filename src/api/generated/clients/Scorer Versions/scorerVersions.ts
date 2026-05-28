@@ -3,14 +3,14 @@
  * Do not edit manually.
  */
 
-import { deleteStoredScorersScorerIdVersionsVersionId } from './deleteStoredScorersScorerIdVersionsVersionId'
-import { getStoredScorersScorerIdVersions } from './getStoredScorersScorerIdVersions'
-import { getStoredScorersScorerIdVersionsCompare } from './getStoredScorersScorerIdVersionsCompare'
-import { getStoredScorersScorerIdVersionsVersionId } from './getStoredScorersScorerIdVersionsVersionId'
-import { postStoredScorersScorerIdVersions } from './postStoredScorersScorerIdVersions'
-import { postStoredScorersScorerIdVersionsVersionIdActivate } from './postStoredScorersScorerIdVersionsVersionIdActivate'
-import { postStoredScorersScorerIdVersionsVersionIdRestore } from './postStoredScorersScorerIdVersionsVersionIdRestore'
+import { deleteApiStoredScorersScorerIdVersionsVersionId } from './deleteApiStoredScorersScorerIdVersionsVersionId'
+import { getApiStoredScorersScorerIdVersions } from './getApiStoredScorersScorerIdVersions'
+import { getApiStoredScorersScorerIdVersionsCompare } from './getApiStoredScorersScorerIdVersionsCompare'
+import { getApiStoredScorersScorerIdVersionsVersionId } from './getApiStoredScorersScorerIdVersionsVersionId'
+import { postApiStoredScorersScorerIdVersions } from './postApiStoredScorersScorerIdVersions'
+import { postApiStoredScorersScorerIdVersionsVersionIdActivate } from './postApiStoredScorersScorerIdVersionsVersionIdActivate'
+import { postApiStoredScorersScorerIdVersionsVersionIdRestore } from './postApiStoredScorersScorerIdVersionsVersionIdRestore'
 
 export function scorerVersions() {
-  return { getStoredScorersScorerIdVersions, postStoredScorersScorerIdVersions, getStoredScorersScorerIdVersionsCompare, getStoredScorersScorerIdVersionsVersionId, deleteStoredScorersScorerIdVersionsVersionId, postStoredScorersScorerIdVersionsVersionIdActivate, postStoredScorersScorerIdVersionsVersionIdRestore }
+  return { getApiStoredScorersScorerIdVersions, postApiStoredScorersScorerIdVersions, getApiStoredScorersScorerIdVersionsCompare, getApiStoredScorersScorerIdVersionsVersionId, deleteApiStoredScorersScorerIdVersionsVersionId, postApiStoredScorersScorerIdVersionsVersionIdActivate, postApiStoredScorersScorerIdVersionsVersionIdRestore }
 }

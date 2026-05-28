@@ -3,16 +3,16 @@
  * Do not edit manually.
  */
 
-import { deleteMemoryNetworkThreadsThreadId } from './deleteMemoryNetworkThreadsThreadId'
-import { getMemoryNetworkStatus } from './getMemoryNetworkStatus'
-import { getMemoryNetworkThreads } from './getMemoryNetworkThreads'
-import { getMemoryNetworkThreadsThreadId } from './getMemoryNetworkThreadsThreadId'
-import { getMemoryNetworkThreadsThreadIdMessages } from './getMemoryNetworkThreadsThreadIdMessages'
-import { patchMemoryNetworkThreadsThreadId } from './patchMemoryNetworkThreadsThreadId'
-import { postMemoryNetworkMessagesDelete } from './postMemoryNetworkMessagesDelete'
-import { postMemoryNetworkSaveMessages } from './postMemoryNetworkSaveMessages'
-import { postMemoryNetworkThreads } from './postMemoryNetworkThreads'
+import { deleteApiMemoryNetworkThreadsThreadId } from './deleteApiMemoryNetworkThreadsThreadId'
+import { getApiMemoryNetworkStatus } from './getApiMemoryNetworkStatus'
+import { getApiMemoryNetworkThreads } from './getApiMemoryNetworkThreads'
+import { getApiMemoryNetworkThreadsThreadId } from './getApiMemoryNetworkThreadsThreadId'
+import { getApiMemoryNetworkThreadsThreadIdMessages } from './getApiMemoryNetworkThreadsThreadIdMessages'
+import { patchApiMemoryNetworkThreadsThreadId } from './patchApiMemoryNetworkThreadsThreadId'
+import { postApiMemoryNetworkMessagesDelete } from './postApiMemoryNetworkMessagesDelete'
+import { postApiMemoryNetworkSaveMessages } from './postApiMemoryNetworkSaveMessages'
+import { postApiMemoryNetworkThreads } from './postApiMemoryNetworkThreads'
 
 export function memoryNetwork() {
-  return { getMemoryNetworkStatus, getMemoryNetworkThreads, postMemoryNetworkThreads, getMemoryNetworkThreadsThreadId, patchMemoryNetworkThreadsThreadId, deleteMemoryNetworkThreadsThreadId, getMemoryNetworkThreadsThreadIdMessages, postMemoryNetworkSaveMessages, postMemoryNetworkMessagesDelete }
+  return { getApiMemoryNetworkStatus, getApiMemoryNetworkThreads, postApiMemoryNetworkThreads, getApiMemoryNetworkThreadsThreadId, patchApiMemoryNetworkThreadsThreadId, deleteApiMemoryNetworkThreadsThreadId, getApiMemoryNetworkThreadsThreadIdMessages, postApiMemoryNetworkSaveMessages, postApiMemoryNetworkMessagesDelete }
 }

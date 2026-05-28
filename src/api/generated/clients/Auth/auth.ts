@@ -3,16 +3,16 @@
  * Do not edit manually.
  */
 
-import { getAuthCapabilities } from './getAuthCapabilities'
-import { getAuthMe } from './getAuthMe'
-import { getAuthRolesRoleIdPermissions } from './getAuthRolesRoleIdPermissions'
-import { getAuthSsoCallback } from './getAuthSsoCallback'
-import { getAuthSsoLogin } from './getAuthSsoLogin'
-import { postAuthCredentialsSignIn } from './postAuthCredentialsSignIn'
-import { postAuthCredentialsSignUp } from './postAuthCredentialsSignUp'
-import { postAuthLogout } from './postAuthLogout'
-import { postAuthRefresh } from './postAuthRefresh'
+import { getApiAuthCapabilities } from './getApiAuthCapabilities'
+import { getApiAuthMe } from './getApiAuthMe'
+import { getApiAuthRolesRoleIdPermissions } from './getApiAuthRolesRoleIdPermissions'
+import { getApiAuthSsoCallback } from './getApiAuthSsoCallback'
+import { getApiAuthSsoLogin } from './getApiAuthSsoLogin'
+import { postApiAuthCredentialsSignIn } from './postApiAuthCredentialsSignIn'
+import { postApiAuthCredentialsSignUp } from './postApiAuthCredentialsSignUp'
+import { postApiAuthLogout } from './postApiAuthLogout'
+import { postApiAuthRefresh } from './postApiAuthRefresh'
 
 export function auth() {
-  return { getAuthCapabilities, getAuthMe, getAuthSsoLogin, getAuthSsoCallback, postAuthLogout, postAuthRefresh, postAuthCredentialsSignIn, postAuthCredentialsSignUp, getAuthRolesRoleIdPermissions }
+  return { getApiAuthCapabilities, getApiAuthMe, getApiAuthSsoLogin, getApiAuthSsoCallback, postApiAuthLogout, postApiAuthRefresh, postApiAuthCredentialsSignIn, postApiAuthCredentialsSignUp, getApiAuthRolesRoleIdPermissions }
 }

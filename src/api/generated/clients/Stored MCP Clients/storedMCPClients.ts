@@ -3,12 +3,12 @@
  * Do not edit manually.
  */
 
-import { deleteStoredMcpClientsStoredMCPClientId } from './deleteStoredMcpClientsStoredMCPClientId'
-import { getStoredMcpClients } from './getStoredMcpClients'
-import { getStoredMcpClientsStoredMCPClientId } from './getStoredMcpClientsStoredMCPClientId'
-import { patchStoredMcpClientsStoredMCPClientId } from './patchStoredMcpClientsStoredMCPClientId'
-import { postStoredMcpClients } from './postStoredMcpClients'
+import { deleteApiStoredMcpClientsStoredMCPClientId } from './deleteApiStoredMcpClientsStoredMCPClientId'
+import { getApiStoredMcpClients } from './getApiStoredMcpClients'
+import { getApiStoredMcpClientsStoredMCPClientId } from './getApiStoredMcpClientsStoredMCPClientId'
+import { patchApiStoredMcpClientsStoredMCPClientId } from './patchApiStoredMcpClientsStoredMCPClientId'
+import { postApiStoredMcpClients } from './postApiStoredMcpClients'
 
 export function storedMCPClients() {
-  return { getStoredMcpClients, postStoredMcpClients, getStoredMcpClientsStoredMCPClientId, patchStoredMcpClientsStoredMCPClientId, deleteStoredMcpClientsStoredMCPClientId }
+  return { getApiStoredMcpClients, postApiStoredMcpClients, getApiStoredMcpClientsStoredMCPClientId, patchApiStoredMcpClientsStoredMCPClientId, deleteApiStoredMcpClientsStoredMCPClientId }
 }

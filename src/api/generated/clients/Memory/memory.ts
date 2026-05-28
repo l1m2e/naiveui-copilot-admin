@@ -3,23 +3,23 @@
  * Do not edit manually.
  */
 
-import { deleteMemoryThreadsThreadId } from './deleteMemoryThreadsThreadId'
-import { getMemoryConfig } from './getMemoryConfig'
-import { getMemoryObservationalMemory } from './getMemoryObservationalMemory'
-import { getMemorySearch } from './getMemorySearch'
-import { getMemoryStatus } from './getMemoryStatus'
-import { getMemoryThreads } from './getMemoryThreads'
-import { getMemoryThreadsThreadId } from './getMemoryThreadsThreadId'
-import { getMemoryThreadsThreadIdMessages } from './getMemoryThreadsThreadIdMessages'
-import { getMemoryThreadsThreadIdWorkingMemory } from './getMemoryThreadsThreadIdWorkingMemory'
-import { patchMemoryThreadsThreadId } from './patchMemoryThreadsThreadId'
-import { postMemoryMessagesDelete } from './postMemoryMessagesDelete'
-import { postMemoryObservationalMemoryBufferStatus } from './postMemoryObservationalMemoryBufferStatus'
-import { postMemorySaveMessages } from './postMemorySaveMessages'
-import { postMemoryThreads } from './postMemoryThreads'
-import { postMemoryThreadsThreadIdClone } from './postMemoryThreadsThreadIdClone'
-import { postMemoryThreadsThreadIdWorkingMemory } from './postMemoryThreadsThreadIdWorkingMemory'
+import { deleteApiMemoryThreadsThreadId } from './deleteApiMemoryThreadsThreadId'
+import { getApiMemoryConfig } from './getApiMemoryConfig'
+import { getApiMemoryObservationalMemory } from './getApiMemoryObservationalMemory'
+import { getApiMemorySearch } from './getApiMemorySearch'
+import { getApiMemoryStatus } from './getApiMemoryStatus'
+import { getApiMemoryThreads } from './getApiMemoryThreads'
+import { getApiMemoryThreadsThreadId } from './getApiMemoryThreadsThreadId'
+import { getApiMemoryThreadsThreadIdMessages } from './getApiMemoryThreadsThreadIdMessages'
+import { getApiMemoryThreadsThreadIdWorkingMemory } from './getApiMemoryThreadsThreadIdWorkingMemory'
+import { patchApiMemoryThreadsThreadId } from './patchApiMemoryThreadsThreadId'
+import { postApiMemoryMessagesDelete } from './postApiMemoryMessagesDelete'
+import { postApiMemoryObservationalMemoryBufferStatus } from './postApiMemoryObservationalMemoryBufferStatus'
+import { postApiMemorySaveMessages } from './postApiMemorySaveMessages'
+import { postApiMemoryThreads } from './postApiMemoryThreads'
+import { postApiMemoryThreadsThreadIdClone } from './postApiMemoryThreadsThreadIdClone'
+import { postApiMemoryThreadsThreadIdWorkingMemory } from './postApiMemoryThreadsThreadIdWorkingMemory'
 
 export function memory() {
-  return { getMemoryStatus, getMemoryConfig, getMemoryObservationalMemory, postMemoryObservationalMemoryBufferStatus, getMemoryThreads, postMemoryThreads, getMemoryThreadsThreadId, patchMemoryThreadsThreadId, deleteMemoryThreadsThreadId, getMemoryThreadsThreadIdMessages, getMemoryThreadsThreadIdWorkingMemory, postMemoryThreadsThreadIdWorkingMemory, postMemorySaveMessages, postMemoryThreadsThreadIdClone, postMemoryMessagesDelete, getMemorySearch }
+  return { getApiMemoryStatus, getApiMemoryConfig, getApiMemoryObservationalMemory, postApiMemoryObservationalMemoryBufferStatus, getApiMemoryThreads, postApiMemoryThreads, getApiMemoryThreadsThreadId, patchApiMemoryThreadsThreadId, deleteApiMemoryThreadsThreadId, getApiMemoryThreadsThreadIdMessages, getApiMemoryThreadsThreadIdWorkingMemory, postApiMemoryThreadsThreadIdWorkingMemory, postApiMemorySaveMessages, postApiMemoryThreadsThreadIdClone, postApiMemoryMessagesDelete, getApiMemorySearch }
 }

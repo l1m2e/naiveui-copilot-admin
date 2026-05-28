@@ -3,10 +3,10 @@
  * Do not edit manually.
  */
 
-import { getProcessors } from './getProcessors'
-import { getProcessorsProcessorId } from './getProcessorsProcessorId'
-import { postProcessorsProcessorIdExecute } from './postProcessorsProcessorIdExecute'
+import { getApiProcessors } from './getApiProcessors'
+import { getApiProcessorsProcessorId } from './getApiProcessorsProcessorId'
+import { postApiProcessorsProcessorIdExecute } from './postApiProcessorsProcessorIdExecute'
 
 export function processors() {
-  return { getProcessors, getProcessorsProcessorId, postProcessorsProcessorIdExecute }
+  return { getApiProcessors, getApiProcessorsProcessorId, postApiProcessorsProcessorIdExecute }
 }

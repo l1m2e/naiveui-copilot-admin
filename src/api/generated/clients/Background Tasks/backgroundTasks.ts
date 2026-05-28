@@ -3,10 +3,10 @@
  * Do not edit manually.
  */
 
-import { getBackgroundTasks } from './getBackgroundTasks'
-import { getBackgroundTasksBackgroundTaskId } from './getBackgroundTasksBackgroundTaskId'
-import { getBackgroundTasksStream } from './getBackgroundTasksStream'
+import { getApiBackgroundTasks } from './getApiBackgroundTasks'
+import { getApiBackgroundTasksBackgroundTaskId } from './getApiBackgroundTasksBackgroundTaskId'
+import { getApiBackgroundTasksStream } from './getApiBackgroundTasksStream'
 
 export function backgroundTasks() {
-  return { getBackgroundTasksStream, getBackgroundTasks, getBackgroundTasksBackgroundTaskId }
+  return { getApiBackgroundTasksStream, getApiBackgroundTasks, getApiBackgroundTasksBackgroundTaskId }
 }

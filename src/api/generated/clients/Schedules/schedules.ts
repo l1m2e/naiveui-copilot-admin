@@ -3,12 +3,12 @@
  * Do not edit manually.
  */
 
-import { getSchedules } from './getSchedules'
-import { getSchedulesScheduleId } from './getSchedulesScheduleId'
-import { getSchedulesScheduleIdTriggers } from './getSchedulesScheduleIdTriggers'
-import { postSchedulesScheduleIdPause } from './postSchedulesScheduleIdPause'
-import { postSchedulesScheduleIdResume } from './postSchedulesScheduleIdResume'
+import { getApiSchedules } from './getApiSchedules'
+import { getApiSchedulesScheduleId } from './getApiSchedulesScheduleId'
+import { getApiSchedulesScheduleIdTriggers } from './getApiSchedulesScheduleIdTriggers'
+import { postApiSchedulesScheduleIdPause } from './postApiSchedulesScheduleIdPause'
+import { postApiSchedulesScheduleIdResume } from './postApiSchedulesScheduleIdResume'
 
 export function schedules() {
-  return { getSchedules, getSchedulesScheduleId, getSchedulesScheduleIdTriggers, postSchedulesScheduleIdPause, postSchedulesScheduleIdResume }
+  return { getApiSchedules, getApiSchedulesScheduleId, getApiSchedulesScheduleIdTriggers, postApiSchedulesScheduleIdPause, postApiSchedulesScheduleIdResume }
 }

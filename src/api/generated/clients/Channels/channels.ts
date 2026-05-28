@@ -3,11 +3,11 @@
  * Do not edit manually.
  */
 
-import { getChannelsPlatformInstallations } from './getChannelsPlatformInstallations'
-import { getChannelsPlatforms } from './getChannelsPlatforms'
-import { postChannelsPlatformAgentIdDisconnect } from './postChannelsPlatformAgentIdDisconnect'
-import { postChannelsPlatformConnect } from './postChannelsPlatformConnect'
+import { getApiChannelsPlatformInstallations } from './getApiChannelsPlatformInstallations'
+import { getApiChannelsPlatforms } from './getApiChannelsPlatforms'
+import { postApiChannelsPlatformAgentIdDisconnect } from './postApiChannelsPlatformAgentIdDisconnect'
+import { postApiChannelsPlatformConnect } from './postApiChannelsPlatformConnect'
 
 export function channels() {
-  return { getChannelsPlatforms, getChannelsPlatformInstallations, postChannelsPlatformConnect, postChannelsPlatformAgentIdDisconnect }
+  return { getApiChannelsPlatforms, getApiChannelsPlatformInstallations, postApiChannelsPlatformConnect, postApiChannelsPlatformAgentIdDisconnect }
 }

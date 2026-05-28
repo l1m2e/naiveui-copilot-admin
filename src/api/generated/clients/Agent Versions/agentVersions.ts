@@ -3,14 +3,14 @@
  * Do not edit manually.
  */
 
-import { deleteStoredAgentsAgentIdVersionsVersionId } from './deleteStoredAgentsAgentIdVersionsVersionId'
-import { getStoredAgentsAgentIdVersions } from './getStoredAgentsAgentIdVersions'
-import { getStoredAgentsAgentIdVersionsCompare } from './getStoredAgentsAgentIdVersionsCompare'
-import { getStoredAgentsAgentIdVersionsVersionId } from './getStoredAgentsAgentIdVersionsVersionId'
-import { postStoredAgentsAgentIdVersions } from './postStoredAgentsAgentIdVersions'
-import { postStoredAgentsAgentIdVersionsVersionIdActivate } from './postStoredAgentsAgentIdVersionsVersionIdActivate'
-import { postStoredAgentsAgentIdVersionsVersionIdRestore } from './postStoredAgentsAgentIdVersionsVersionIdRestore'
+import { deleteApiStoredAgentsAgentIdVersionsVersionId } from './deleteApiStoredAgentsAgentIdVersionsVersionId'
+import { getApiStoredAgentsAgentIdVersions } from './getApiStoredAgentsAgentIdVersions'
+import { getApiStoredAgentsAgentIdVersionsCompare } from './getApiStoredAgentsAgentIdVersionsCompare'
+import { getApiStoredAgentsAgentIdVersionsVersionId } from './getApiStoredAgentsAgentIdVersionsVersionId'
+import { postApiStoredAgentsAgentIdVersions } from './postApiStoredAgentsAgentIdVersions'
+import { postApiStoredAgentsAgentIdVersionsVersionIdActivate } from './postApiStoredAgentsAgentIdVersionsVersionIdActivate'
+import { postApiStoredAgentsAgentIdVersionsVersionIdRestore } from './postApiStoredAgentsAgentIdVersionsVersionIdRestore'
 
 export function agentVersions() {
-  return { getStoredAgentsAgentIdVersions, postStoredAgentsAgentIdVersions, getStoredAgentsAgentIdVersionsCompare, getStoredAgentsAgentIdVersionsVersionId, deleteStoredAgentsAgentIdVersionsVersionId, postStoredAgentsAgentIdVersionsVersionIdActivate, postStoredAgentsAgentIdVersionsVersionIdRestore }
+  return { getApiStoredAgentsAgentIdVersions, postApiStoredAgentsAgentIdVersions, getApiStoredAgentsAgentIdVersionsCompare, getApiStoredAgentsAgentIdVersionsVersionId, deleteApiStoredAgentsAgentIdVersionsVersionId, postApiStoredAgentsAgentIdVersionsVersionIdActivate, postApiStoredAgentsAgentIdVersionsVersionIdRestore }
 }

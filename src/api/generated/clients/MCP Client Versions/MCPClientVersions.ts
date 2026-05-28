@@ -3,14 +3,14 @@
  * Do not edit manually.
  */
 
-import { deleteStoredMcpClientsMcpClientIdVersionsVersionId } from './deleteStoredMcpClientsMcpClientIdVersionsVersionId'
-import { getStoredMcpClientsMcpClientIdVersions } from './getStoredMcpClientsMcpClientIdVersions'
-import { getStoredMcpClientsMcpClientIdVersionsCompare } from './getStoredMcpClientsMcpClientIdVersionsCompare'
-import { getStoredMcpClientsMcpClientIdVersionsVersionId } from './getStoredMcpClientsMcpClientIdVersionsVersionId'
-import { postStoredMcpClientsMcpClientIdVersions } from './postStoredMcpClientsMcpClientIdVersions'
-import { postStoredMcpClientsMcpClientIdVersionsVersionIdActivate } from './postStoredMcpClientsMcpClientIdVersionsVersionIdActivate'
-import { postStoredMcpClientsMcpClientIdVersionsVersionIdRestore } from './postStoredMcpClientsMcpClientIdVersionsVersionIdRestore'
+import { deleteApiStoredMcpClientsMcpClientIdVersionsVersionId } from './deleteApiStoredMcpClientsMcpClientIdVersionsVersionId'
+import { getApiStoredMcpClientsMcpClientIdVersions } from './getApiStoredMcpClientsMcpClientIdVersions'
+import { getApiStoredMcpClientsMcpClientIdVersionsCompare } from './getApiStoredMcpClientsMcpClientIdVersionsCompare'
+import { getApiStoredMcpClientsMcpClientIdVersionsVersionId } from './getApiStoredMcpClientsMcpClientIdVersionsVersionId'
+import { postApiStoredMcpClientsMcpClientIdVersions } from './postApiStoredMcpClientsMcpClientIdVersions'
+import { postApiStoredMcpClientsMcpClientIdVersionsVersionIdActivate } from './postApiStoredMcpClientsMcpClientIdVersionsVersionIdActivate'
+import { postApiStoredMcpClientsMcpClientIdVersionsVersionIdRestore } from './postApiStoredMcpClientsMcpClientIdVersionsVersionIdRestore'
 
 export function MCPClientVersions() {
-  return { getStoredMcpClientsMcpClientIdVersions, postStoredMcpClientsMcpClientIdVersions, getStoredMcpClientsMcpClientIdVersionsCompare, getStoredMcpClientsMcpClientIdVersionsVersionId, deleteStoredMcpClientsMcpClientIdVersionsVersionId, postStoredMcpClientsMcpClientIdVersionsVersionIdActivate, postStoredMcpClientsMcpClientIdVersionsVersionIdRestore }
+  return { getApiStoredMcpClientsMcpClientIdVersions, postApiStoredMcpClientsMcpClientIdVersions, getApiStoredMcpClientsMcpClientIdVersionsCompare, getApiStoredMcpClientsMcpClientIdVersionsVersionId, deleteApiStoredMcpClientsMcpClientIdVersionsVersionId, postApiStoredMcpClientsMcpClientIdVersionsVersionIdActivate, postApiStoredMcpClientsMcpClientIdVersionsVersionIdRestore }
 }

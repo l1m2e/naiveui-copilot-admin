@@ -3,9 +3,9 @@
  * Do not edit manually.
  */
 
-import { getExperiments } from './getExperiments'
-import { getExperimentsReviewSummary } from './getExperimentsReviewSummary'
+import { getApiExperiments } from './getApiExperiments'
+import { getApiExperimentsReviewSummary } from './getApiExperimentsReviewSummary'
 
 export function experiments() {
-  return { getExperiments, getExperimentsReviewSummary }
+  return { getApiExperiments, getApiExperimentsReviewSummary }
 }
