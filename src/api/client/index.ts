@@ -36,14 +36,14 @@ function appendParams(url: string, params?: unknown) {
   const searchParams = new URLSearchParams()
 
   Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined) return
+    if (value === undefined || value === null || value === '') return
 
     if (Array.isArray(value)) {
       value.forEach(item => searchParams.append(key, String(item)))
       return
     }
 
-    searchParams.append(key, value === null ? 'null' : String(value))
+    searchParams.append(key, String(value))
   })
 
   const query = searchParams.toString()

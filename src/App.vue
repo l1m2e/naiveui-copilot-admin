@@ -12,10 +12,12 @@ const themeOverrides: GlobalThemeOverrides = {
 
 <template>
   <n-config-provider :date-locale="dateZhCN" :locale="zhCN" :theme-overrides="themeOverrides">
-    <n-message-provider>
-      <main font-sans>
-        <router-view />
-      </main>
-    </n-message-provider>
+    <n-dialog-provider>
+      <n-message-provider>
+        <main font-sans>
+          <router-view />
+        </main>
+      </n-message-provider>
+    </n-dialog-provider>
   </n-config-provider>
 </template>
