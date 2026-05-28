@@ -4,6 +4,7 @@ definePage({
     title: '登录',
     layout: 'empty',
     hideInMenu: true,
+    noCache: true,
   },
 })
 
