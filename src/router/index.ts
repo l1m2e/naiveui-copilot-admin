@@ -13,6 +13,18 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   loadingBar.start()
   const { addTag } = useTagsStroe()
+  const authStore = useAuthStore()
+
+  if (!authStore.isAuthenticated && to.path !== '/login') {
+    next('/login')
+    return
+  }
+
+  if (authStore.isAuthenticated && to.path === '/login') {
+    next('/')
+    return
+  }
+
   !to.meta?.noCache && addTag({ path: to.path, name: to.name as string, label: to.meta?.title as string || '' })
   next()
 })

@@ -8,3 +8,4 @@ node_modules
 .idea/
 *.log
 docs/.vitepress/cache
+src/types/**/*.d.ts

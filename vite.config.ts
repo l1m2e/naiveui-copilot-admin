@@ -74,4 +74,13 @@ export default defineConfig({
     UnoCSS(),
     vueJsx(),
   ],
+
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4111',
+        changeOrigin: true,
+      },
+    },
+  },
 })

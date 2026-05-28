@@ -77,10 +77,15 @@ async function parseResponse(response: Response, responseType?: RequestConfig['r
 const client: Client = async <TResponseData, _TError = unknown, TRequestData = unknown>(config: RequestConfig<TRequestData>): Promise<ResponseConfig<TResponseData>> => {
   const requestUrl = appendParams(resolveUrl(config.url, config.baseURL), config.params)
   const hasJsonBody = config.data !== undefined && !(config.data instanceof FormData)
+  const mergedHeaders = mergeHeaders(config.headers, hasJsonBody)
+  const token = sessionStorage.getItem('mastra-token')
+  if (token) {
+    mergedHeaders.set('X-Mastra-Admin-Token', token)
+  }
   const response = await fetch(requestUrl, {
     body: config.data instanceof FormData ? config.data : hasJsonBody ? JSON.stringify(config.data) : undefined,
     credentials: config.credentials ?? 'include',
-    headers: mergeHeaders(config.headers, hasJsonBody),
+    headers: mergedHeaders,
     method: config.method?.toUpperCase(),
     signal: config.signal,
   })
