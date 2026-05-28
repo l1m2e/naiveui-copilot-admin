@@ -10,7 +10,9 @@ const {
   collapsedRows = 2,
   search,
   reset,
-  as = NCard
+  as = NCard,
+  formRootProps,
+  buttonClass,
 } = defineProps<QueryFormProps>()
 
 const [Form, form, formRef] = useForm<any>()
@@ -78,18 +80,18 @@ defineExpose({
 
 <template>
   <component :is="as">
-    <Form.Root label-placement="left" label-width="auto">
+    <Form.Root label-placement="left" label-width="auto" v-bind="formRootProps">
       <div class="gap-x-2 grid" :class="typeof gridCols === 'string' ? gridCols : ''">
         <template v-for="item in visibleItems" :key="item.field">
           <Form.Item v-bind="item" />
         </template>
-        <div class="flex gap-x-2 items-start justify-end" :style="{ gridColumnStart: currentColumns }">
-          <NButton :loading="isResetLoading || isSearchLoading" class="w-80px" @click="executeReset">重置</NButton>
-          <NButton type="primary" :loading="isSearchLoading || isResetLoading" class="w-80px" @click="executeSearch">查询</NButton>
-          <div v-if="showCollapseButton" class="ml-2 mt-2 flex gap-1 cursor-pointer items-center" @click="toggleCollapse">
+        <div class="flex gap-x-3 items-start justify-end" :style="{ gridColumn: '-2 / -1' }">
+          <div v-if="showCollapseButton" :class="buttonClass" class="ml-2 mt-2 flex gap-1 cursor-pointer items-center" @click="toggleCollapse">
             {{ isCollapsed ? '展开' : '收起' }}
             <div :class="isCollapsed ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'" />
           </div>
+          <NButton :loading="isResetLoading || isSearchLoading" class="w-80px" :size="formRootProps?.size" @click="executeReset">重置</NButton>
+          <NButton type="primary" :loading="isSearchLoading || isResetLoading" class="w-80px" :size="formRootProps?.size" @click="executeSearch">查询</NButton>
         </div>
       </div>
     </Form.Root>

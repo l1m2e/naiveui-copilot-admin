@@ -1,5 +1,4 @@
 import type { FormItemProps as NFormItemProps } from 'naive-ui'
-import type * as yup from 'yup'
 import type { FromItemComponentType } from '~/constants'
 
 export type FormItemProps = {
@@ -19,4 +18,6 @@ export type FormItemProps = {
   slots?: Record<string, (form: any) => JSX.Element | string>
   /** 表单 */
   formItemProps?: NFormItemProps & { class?: string | string[] }
+  /** 样式 */
+  class?: string
 }

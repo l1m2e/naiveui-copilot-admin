@@ -1,3 +1,4 @@
+import type { FormProps } from 'naive-ui'
 import type { FormItemProps } from '~/components/form-item'
 
 export interface QueryFormProps {
@@ -18,4 +19,8 @@ export interface QueryFormProps {
   reset?: () => void | Promise<any>
   /** 包裹的组件 默认 n-card */
   as?: string | Component
+  /** formRootProps */
+  formRootProps?: FormProps
+  /** 查询按钮的 class */
+  buttonClass?: string
 }

@@ -21,6 +21,8 @@ declare module 'yup' {
     positiveNumber: (decimals?: number, message?: string) => this
     /** 非负数（包含 0），可带指定小数位 默认2位 */
     nonNegativeNumber: (decimals?: number, message?: string) => this
+    /** 中国大陆身份证校验 */
+    idCard: (message?: string) => this
   }
 }
 
@@ -60,6 +62,37 @@ export function registerYupExtensions() {
         return regex.test(v)
       },
       message: (decimals: number = 2) => `请输入非负数，最多保留 ${decimals} 位小数（可以为 0）`
+    },
+    idCard: {
+      test: (v: string) => {
+        const weightFactor: number[] = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+        const checkCode: string[] = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2']
+        const code: string = `${v}`
+        const last: string = v[17] // 最后一位
+
+        const seventeen: string = code.substring(0, 17)
+
+        // ISO 7064:1983.MOD 11-2
+        // 判断最后一位校验码是否正确
+        const arr: string[] = [...seventeen]
+        const len: number = arr.length
+        let num: number = 0
+        for (let i = 0; i < len; i++) {
+          num += Number(arr[i]) * weightFactor[i]
+        }
+
+        // 获取余数
+        const resisue: number = num % 11
+        const lastNo: string = checkCode[resisue]
+        // 格式的正则
+        const idcardPattern: RegExp = /^[1-9]\d{5}(?:19\d{2}|20\d{2})(?:0[1-9]|1[0|12])(?:0[1-9]|[1|2]\d|3[0|1])\d{3}[0-9X]$/
+
+        // 判断格式是否正确
+        const format: boolean = idcardPattern.test(v)
+        // 返回验证结果，校验码和格式同时正确才算是合法的身份证号码
+        return last === lastNo && format
+      },
+      message: '请输入有效的身份证号码'
     }
   }
 

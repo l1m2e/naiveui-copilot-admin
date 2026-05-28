@@ -1,4 +1,6 @@
+export * from './copyText'
 export * from './form-validation'
+export * from './objectTool'
 export * from './tree'
 export * from './yup-error-map'
 export * from './yup-extensions'

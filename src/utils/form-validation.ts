@@ -1,25 +1,33 @@
 import type { FormItemRule } from 'naive-ui'
 import type * as yup from 'yup'
+import { get } from 'es-toolkit/compat'
 
 /**
- * 将 Yup schema 转换为 naive-ui 的 FormItemRule
- * 统一使用异步验证器以支持所有类型的验证（包括同步和异步）
+ * Yup schema → naive-ui FormItemRule
+ *
+ * - field 路径语法完全兼容 es-toolkit/get
+ * - 支持任意 object / array 混合
+ * - 支持 yup.ref（通过 context）
  */
-export function yupToRule<T extends yup.Schema>(schema: T): FormItemRule {
-  const required = schema.describe().tests?.some((test: any) => test.name === 'required') ?? false
+export function yupToRule<T extends yup.Schema>(schema: T, field?: string, model?: Record<string, any> | any[],): FormItemRule {
+  const description = schema.describe()
+  const required = description?.optional === false
 
-  // 统一使用异步验证器，兼容同步和异步验证
   return {
     required,
+    trigger: ['blur', 'change'],
     asyncValidator: async (_rule, value) => {
       try {
-        // 使用 validate 而非 validateSync，自动支持异步测试
-        await schema.validate(value)
+        // 没有 path / model，退化为普通校验
+        if (!field || !model) {
+          return await schema.validate(value)
+        }
+        const fieldValue = get(model, field)
+        await schema.validate(fieldValue, { context: model })
       }
       catch (error: any) {
-        throw new Error(error.message || '验证失败')
+        throw new Error(error?.message || '验证失败')
       }
     },
-    trigger: ['blur', 'change'],
   }
 }

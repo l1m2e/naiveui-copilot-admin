@@ -1,16 +1,24 @@
 import type { FormInst } from 'naive-ui'
 import type { FormItemProps } from '~/components/form-item'
+import { cloneDeep } from 'es-toolkit'
+import { assign, isArray, set } from 'es-toolkit/compat'
 import { formProps, NForm } from 'naive-ui'
-import FormItemGrid from '~/components/form-item-grid/form-item-grid.vue'
-import FormItem from '~/components/form-item/form-item.vue'
+import FormItemGrid from '~/components/form-item-grid/index.vue'
+import FormItem from '~/components/form-item/index.vue'
 import { FORM_ITEM_COMPONENT_MAP } from '~/constants'
 
 export interface UseFormInst extends FormInst {
   reset: () => void
 }
 
-export function useForm<T = Record<string, any>>() {
-  const form = ref<T>({} as T)
+export interface FormOptions<T> {
+  /** form 内部创建的时候的初始化数据, 如果是 Ref 这将覆盖内部创建的 form 有利于你在二次封装组件都时候 直接将 defineModel 传入   */
+  init?: T | Ref<T>
+}
+
+export function useForm<T extends any[] | Record<string, any> = Record<string, any>>(options?: FormOptions<T>) {
+  const defaultData = cloneDeep(toRaw(toValue(options?.init))) as T
+  const form = isRef(options?.init) ? options.init : ref<T>(cloneDeep(defaultData ?? {} as T))
   const formRef = ref<FormInst | null>(null)
   const { formItems, provideAutomaticCollectionSchemaKey } = useAutomaticCollectionSchema()
 
@@ -36,21 +44,26 @@ export function useForm<T = Record<string, any>>() {
   }
 
   const resetForm = () => {
-    const resetData: Record<string, any> = {}
+    const resetData = isArray(form.value) ? [] : {}
     formItems.value.forEach((item) => {
       if (item.field) {
         if (item.value !== undefined) {
-          resetData[item.field] = item.value
+          set(resetData, item.field!, item.value)
         }
         else if (typeof item.component === 'string' && FORM_ITEM_COMPONENT_MAP[item.component as keyof typeof FORM_ITEM_COMPONENT_MAP]?.defaultValue !== undefined) {
-          resetData[item.field] = FORM_ITEM_COMPONENT_MAP[item.component as keyof typeof FORM_ITEM_COMPONENT_MAP].defaultValue
+          set(resetData, item.field!, FORM_ITEM_COMPONENT_MAP[item.component as keyof typeof FORM_ITEM_COMPONENT_MAP].defaultValue)
         }
         else {
-          resetData[item.field] = null
+          set(resetData, item.field!, null)
         }
       }
     })
     form.value = resetData as T
+
+    if (options?.init) {
+      isArray(form.value) ? form.value = cloneDeep(defaultData) : assign(form.value, cloneDeep(options.init))
+    }
+
     formRef.value?.restoreValidation()
   }
 

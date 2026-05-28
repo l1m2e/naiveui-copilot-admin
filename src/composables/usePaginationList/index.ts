@@ -1,10 +1,17 @@
-import type { MaybeRef } from 'vue'
+import type { ComputedRef, MaybeRef } from 'vue'
+import type {
+  ApiFunctionWithHeadParam,
+  ApiParams,
+  ApiRest,
+  FetchArgsWithHeadParam,
+} from '../_shared/api-types'
+import { get } from 'es-toolkit/compat'
 
-interface UseTablePagination<T extends (...args: any[]) => any> {
+interface UseTablePagination<T extends ApiFunctionWithHeadParam> {
   /** 请求方法 */
   api: T
-  /** 请求参数 可以是 ref 或者计算 */
-  params?: MaybeRef<Parameters<T>> | ComputedRef<Parameters<T>>
+  /** 请求参数（会合并进第一个入参对象）可以是 ref 或者计算 */
+  params?: MaybeRef<Record<string, any>> | ComputedRef<Record<string, any>>
   /** 是否立即执行 */
   immediate?: boolean
   /** 数据字段名 默认为 'rows' */
@@ -13,7 +20,9 @@ interface UseTablePagination<T extends (...args: any[]) => any> {
   totalField?: string
 }
 
-export function usePaginationList<T extends (...args: any[]) => any>({ api, params, immediate = true, dataField = 'rows', totalField = 'total' }: UseTablePagination<T>) {
+export function usePaginationList<T extends ApiFunctionWithHeadParam>(
+  { api, params, immediate = true, dataField = 'rows', totalField = 'total' }: UseTablePagination<T>,
+) {
   /** 配置分页 */
   const paginationConfig = ref({
     /** 总数 - NaiveUI 使用 itemCount */
@@ -39,16 +48,30 @@ export function usePaginationList<T extends (...args: any[]) => any>({ api, para
     }
   })
 
-  type ResponseData = PromiseInnerType<ReturnType<T>>
+  type ResponseData = Awaited<ReturnType<T>>
   type List = ResponseData[keyof ResponseData] extends any[] ? ResponseData[keyof ResponseData] : any[]
 
   /** 获取数据 */
-  const { state: list, execute: getList, isLoading } = useAsyncState<List>(async () => {
+  const { state: list, execute, isLoading } = useAsyncState<List, FetchArgsWithHeadParam<T>, false>(async (...args) => {
     const { page: pageNum, pageSize } = paginationConfig.value
-    const response = await api({ ...toValue(params), pageSize, pageNum })
-    paginationConfig.value.itemCount = response[totalField]
-    return response[dataField]
-  }, [] as List, { immediate })
+    const [fastParams, ...restArgs] = args
+    const mergedParams = {
+      ...(toValue(params) ?? {}),
+      page_size: pageSize,
+      page: pageNum,
+      ...(fastParams ?? {}),
+    } as unknown as ApiParams<T>
+    const response = await api(mergedParams, ...(restArgs as ApiRest<T>))
+    paginationConfig.value.itemCount = get(response, totalField)
+    return get(response, dataField)
+  }, [] as List, { immediate, shallow: false })
+
+  function getList(): ReturnType<typeof execute>
+  function getList(values: any): ReturnType<typeof execute>
+  function getList(...args: FetchArgsWithHeadParam<T>): ReturnType<typeof execute>
+  function getList(...args: any[]) {
+    return execute(0, ...(args as FetchArgsWithHeadParam<T>))
+  }
 
   // 监听分页配置变化如果有变化重新请求数据
   const paginationStop = watch([() => paginationConfig.value.page, () => paginationConfig.value.pageSize], () => {
