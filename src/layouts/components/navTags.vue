@@ -88,12 +88,12 @@ const vars = useThemeVars()
 </script>
 
 <template>
-  <div class="flex items-center relative">
+  <div class="relative flex items-center">
     <!-- 左箭头 -->
     <Transition name="fade">
       <button
         v-if="showLeftArrow"
-        class="nav-arrow flex h-32px w-8 cursor-pointer transition-colors items-center left-0 justify-center absolute z-10 hover:bg-gray-100"
+        class="nav-arrow absolute left-0 z-10 h-32px w-8 flex cursor-pointer items-center justify-center transition-colors hover:bg-gray-100"
         @click="scrollToLeft"
       >
         <div class="i-lucide-chevron-left text-base" />
@@ -101,15 +101,15 @@ const vars = useThemeVars()
     </Transition>
 
     <!-- 标签容器 -->
-    <div ref="scrollContainer" class="scrollbar-hide px-2 flex flex-1 items-center overflow-x-auto">
-      <ContextMenuRoot v-for="item in tagsList" :key="item.label">
+    <div ref="scrollContainer" class="scrollbar-hide flex flex-1 items-center overflow-x-auto px-2">
+      <ContextMenuRoot v-for="item in tagsList" :key="item.path">
         <ContextMenuTrigger as-child>
           <div
-            class="tab-item group flex flex-shrink-0 h-32px items-center"
+            class="tab-item group h-32px flex flex-shrink-0 items-center"
             :class="currentTag?.path === item.path ? 'activation' : 'transition-colors hover:bg-gray-100'"
             @click="() => selectTag(item)"
           >
-            <div class="flex gap-5px items-center justify-between">
+            <div class="flex items-center justify-between gap-5px">
               <div>{{ item.label }}</div>
 
               <!-- 关闭按钮 -->
@@ -128,10 +128,10 @@ const vars = useThemeVars()
 
         <!-- 右键菜单 -->
         <ContextMenuPortal>
-          <ContextMenuContent class="p-1 border border-gray-200 rounded-md bg-white shadow-lg z-9999">
+          <ContextMenuContent class="z-9999 border border-gray-200 rounded-md bg-white p-1 shadow-lg">
             <ContextMenuItem
               v-for="menuItem in getContextMenuItems(item)" :key="menuItem.label"
-              class="text-sm px-3 py-2 outline-none rounded flex gap-2 cursor-pointer transition-colors items-center hover:bg-gray-100"
+              class="flex cursor-pointer items-center gap-2 rounded px-3 py-2 text-sm outline-none transition-colors hover:bg-gray-100"
               @select="menuItem.action"
             >
               <div :class="menuItem.icon" />
@@ -146,7 +146,7 @@ const vars = useThemeVars()
     <Transition name="fade">
       <button
         v-if="showRightArrow"
-        class="nav-arrow flex h-32px w-8 cursor-pointer transition-colors items-center right-0 justify-center absolute z-10 hover:bg-gray-100"
+        class="nav-arrow absolute right-0 z-10 h-32px w-8 flex cursor-pointer items-center justify-center transition-colors hover:bg-gray-100"
         @click="scrollToRight"
       >
         <div class="i-lucide-chevron-right text-base" />

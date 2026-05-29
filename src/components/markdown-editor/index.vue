@@ -78,7 +78,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    class="b rounded-md bg-white w-full transition-border-color duration-200 overflow-hidden"
+    class="b rounded-xl bg-white w-full transition-border-color duration-200 overflow-hidden overflow-y-auto"
     :class="[
       focused ? 'b-[#36ad6a]' : 'b-gray-300',
       { 'opacity-60 pointer-events-none': !editable },

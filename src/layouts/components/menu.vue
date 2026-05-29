@@ -1,19 +1,19 @@
 <script setup lang="tsx">
 import type { MenuOption } from 'naive-ui'
-import type { AppMenuOption } from '~/stores/useMenu'
+import type { AppMenuOption } from '~/stores/useMenuStore'
 import { storeToRefs } from 'pinia'
-import { RouterLink, useRoute, useRouter } from 'vue-router'
-import { useMenuStore } from '~/stores/useMenu'
-import { LAYOUTPROVIDE_KEY } from '../constants'
+import { RouterLink, useRoute } from 'vue-router'
+import { routes as autoRoutes } from 'vue-router/auto-routes'
 
 const route = useRoute()
-const router = useRouter()
-const layoutProvide = inject(LAYOUTPROVIDE_KEY)!
+const { sidebarCollapsed, sidebarWidth, sidebarIconSize, sidebarCollapsedWidth } = storeToRefs(useAppStore())
 const { menuTree } = storeToRefs(useMenuStore())
 const { buildMenuFromRoutes } = useMenuStore()
 
 /** 初始化菜单数据 */
-buildMenuFromRoutes(router.options.routes)
+buildMenuFromRoutes([...autoRoutes])
+
+const activeKey = computed(() => (route.meta?.activeMenu as string) || route.name as string)
 
 /** 渲染菜单名称 */
 function renderMenuLabel(option: MenuOption) {
@@ -24,7 +24,7 @@ function renderMenuLabel(option: MenuOption) {
 /** 渲染菜单图标 */
 function renderIcon(option: MenuOption) {
   const appOption = option as unknown as AppMenuOption
-  return !appOption.mate?.icon ? null : <i class={appOption.mate.icon} />
+  return !appOption.meta?.icon ? null : <div class={`${appOption.meta.icon} text-3.3`} />
 }
 </script>
 
@@ -33,20 +33,20 @@ function renderIcon(option: MenuOption) {
     bordered
     collapse-mode="width"
     show-trigger="arrow-circle"
-    :collapsed-width="layoutProvide.sidebarCollapsedWidth"
-    :width="layoutProvide.sidebarWidth"
-    :collapsed="layoutProvide.sidebarCollapsed"
-    @collapse="layoutProvide.sidebarCollapsed = true"
-    @expand="layoutProvide.sidebarCollapsed = false"
+    :collapsed-width="sidebarCollapsedWidth"
+    :width="sidebarWidth"
+    :collapsed="sidebarCollapsed"
+    @collapse="sidebarCollapsed = true"
+    @expand="sidebarCollapsed = false"
   >
     <n-menu
-      :collapsed="layoutProvide.sidebarCollapsed"
-      :collapsed-width="layoutProvide.sidebarCollapsedWidth"
-      :collapsed-icon-size="layoutProvide.sidebarIconSize"
+      :collapsed="sidebarCollapsed"
+      :collapsed-width="sidebarCollapsedWidth"
+      :collapsed-icon-size="sidebarIconSize"
       :options="menuTree"
       :render-label="renderMenuLabel"
       :render-icon="renderIcon"
-      :value="route.name"
+      :value="activeKey"
     />
   </n-layout-sider>
 </template>

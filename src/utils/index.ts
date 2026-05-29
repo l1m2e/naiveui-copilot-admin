@@ -1,6 +1,7 @@
 export * from './copyText'
 export * from './form-validation'
 export * from './objectTool'
+export * from './permissions'
 export * from './promisWithResolvers'
 export * from './tree'
 export * from './yup-error-map'

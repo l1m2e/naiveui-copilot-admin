@@ -1,5 +1,8 @@
 <script lang="tsx" setup>
+import type { FormItemProps } from '~/components/form-item'
+import * as yup from 'yup'
 import MarkdownEditor from '~/components/markdown-editor/index.vue'
+import MonacoEditor from '~/components/monaco-editor/index.vue'
 
 definePage({
   meta: {
@@ -12,134 +15,103 @@ const message = useMessage()
 const router = useRouter()
 const route = useRoute()
 
-const formRef = ref(null)
-
 const id = computed(() => (route.params as { id: string }).id)
 const isNew = computed(() => id.value === 'new')
-const pageTitle = computed(() => (isNew.value ? '新增表单' : '编辑表单'))
 
-const formValue = ref<{
-  name: string
-  formKey: string
-  prompt: string
-  schema: string
-}>({
-  name: '',
-  formKey: '',
-  prompt: '',
-  schema: '',
+const [Form, form, formRef] = useForm({
+  init: {
+    name: '',
+    formKey: '',
+    prompt: '',
+    schema: '',
+  },
 })
 
-const rules = {
-  name: { required: true, message: '请输入表单名称', trigger: 'blur' },
-  formKey: { required: true, message: '请输入表单 Key', trigger: 'blur' },
-  prompt: { required: true, message: '请输入提示词', trigger: 'blur' },
-  schema: { required: true, message: '请输入 Schema 校验 JSON', trigger: 'blur' },
-}
+const basicItems = computed<FormItemProps[]>(() => [
+  {
+    label: '表单名称',
+    field: 'name',
+    component: 'n-input',
+    props: { placeholder: '请输入表单名称' },
+    rule: yup.string().required('请输入表单名称'),
+  },
+  {
+    label: '表单 Key',
+    field: 'formKey',
+    component: 'n-input',
+    props: { placeholder: '请输入表单 Key，需唯一', disabled: !isNew.value },
+    rule: yup.string().required('请输入表单 Key'),
+  },
+  {
+    label: '提示词',
+    field: 'prompt',
+    component: () => <MarkdownEditor v-model={form.value.prompt} class="h-600px" />,
+    rule: yup.string().required('请输入提示词'),
+  },
+  {
+    label: 'Schema 校验',
+    field: 'schema',
+    component: () => <MonacoEditor v-model={form.value.schema} language="json" class="rounded-xl h-600px overflow-hidden" />,
+    rule: yup.string().required('请输入 Schema 校验 JSON'),
+  },
+])
 
-async function loadForm() {
+useLoading(async () => {
   if (isNew.value) return
-  try {
-    const form = await api.admin.getScreeningAutoFillFormsId(id.value)
-    formValue.value = {
-      name: form.name,
-      formKey: form.formKey,
-      prompt: form.prompt,
-      schema: JSON.stringify(form.schema, null, 2),
-    }
+  const formData = await api.admin.getScreeningAutoFillFormsId(id.value)
+  form.value = {
+    name: formData.name,
+    formKey: formData.formKey,
+    prompt: formData.prompt,
+    schema: JSON.stringify(formData.schema, null, 2),
   }
-  catch {
-    message.error('加载表单失败')
-    router.back()
-  }
-}
+}, { immediate: true })
 
-function handleSchemaInput(value: string) {
-  formValue.value.schema = value
-}
-
-async function handleSubmit() {
-  await (formRef.value as any)?.validate()
+const [submitLoading, handleSubmit] = useLoading(async () => {
+  await formRef.value?.validate()
   let schema: Record<string, unknown>
   try {
-    schema = JSON.parse(formValue.value.schema)
+    schema = JSON.parse(form.value.schema)
   }
   catch {
     message.error('Schema 校验 JSON 格式不正确')
     return
   }
-
-  try {
-    if (isNew.value) {
-      await api.admin.postScreeningAutoFillForms({
-        name: formValue.value.name,
-        formKey: formValue.value.formKey,
-        prompt: formValue.value.prompt,
-        schema,
-      })
-      message.success('创建成功')
-    }
-    else {
-      await api.admin.putScreeningAutoFillFormsId(id.value, {
-        name: formValue.value.name,
-        formKey: formValue.value.formKey,
-        prompt: formValue.value.prompt,
-        schema,
-      })
-      message.success('保存成功')
-    }
-    router.back()
+  if (isNew.value) {
+    await api.admin.postScreeningAutoFillForms({
+      name: form.value.name,
+      formKey: form.value.formKey,
+      prompt: form.value.prompt,
+      schema,
+    })
+    message.success('创建成功')
   }
-  catch {
-    message.error(isNew.value ? '创建失败' : '保存失败')
+  else {
+    await api.admin.putScreeningAutoFillFormsId(id.value, {
+      name: form.value.name,
+      formKey: form.value.formKey,
+      prompt: form.value.prompt,
+      schema,
+    })
+    message.success('保存成功')
   }
-}
-
-loadForm()
+  router.back()
+})
 </script>
 
 <template>
-  <div class="space-y-4">
-    <n-card :title="pageTitle">
-      <n-form
-        ref="formRef"
-        :model="formValue"
-        :rules="rules"
-        label-placement="left"
-        label-width="120"
-        class="max-w-800px"
-      >
-        <n-form-item label="表单名称" path="name">
-          <n-input v-model:value="formValue.name" placeholder="请输入表单名称" />
-        </n-form-item>
-        <n-form-item label="表单 Key" path="formKey">
-          <n-input v-model:value="formValue.formKey" placeholder="请输入表单 Key，需唯一" :disabled="!isNew" />
-        </n-form-item>
-        <n-form-item label="提示词" path="prompt">
-          <MarkdownEditor
-            v-model="formValue.prompt"
-            placeholder="请输入 AI 自动填写的提示词"
-            :min-height="200"
-          />
-        </n-form-item>
-        <n-form-item label="Schema 校验" path="schema">
-          <n-input
-            :value="formValue.schema"
-            type="textarea"
-            :rows="10"
-            placeholder="请输入 JSON Schema（如 {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {...}}）"
-            @update:value="handleSchemaInput"
-          />
-        </n-form-item>
-        <n-form-item>
-          <n-button type="primary" @click="handleSubmit">
-            {{ isNew ? '创建' : '保存' }}
-          </n-button>
-          <n-button class="ml-2" @click="router.back()">
-            取消
-          </n-button>
-        </n-form-item>
-      </n-form>
+  <div class="pb-16 flex flex-col h-full space-y-4">
+    <n-card class="flex flex-1 flex-col">
+      <Form.Root label-placement="top" class="flex flex-col h-full">
+        <Form.ItemGrid :items="basicItems" class="grid-cols-2" />
+      </Form.Root>
     </n-card>
+
+    <FooterOperation
+      :confirm-text="isNew ? '创建' : '保存'"
+      :loading="submitLoading"
+      @confirm="handleSubmit"
+      @cancel="router.back()"
+    />
   </div>
 </template>
