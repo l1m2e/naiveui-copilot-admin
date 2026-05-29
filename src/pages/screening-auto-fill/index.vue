@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
 import type { GetScreeningAutoFillForms200 } from '~/api/generated/admin'
-import { deleteScreeningAutoFillFormsId, getScreeningAutoFillForms } from '~/api/generated/admin'
 
 definePage({
   meta: {
@@ -14,10 +13,10 @@ const message = useMessage()
 const dialog = useDialog()
 const router = useRouter()
 
-type FormRow = GetAdminScreeningAutoFillForms200['rows'][number]
+type FormRow = GetScreeningAutoFillForms200['rows'][number]
 
 const { QueryForm, Table, getList } = useTable({
-  api: getAdminScreeningAutoFillForms,
+  api: api.admin.getScreeningAutoFillForms,
   queryFormSchema: [
     {
       label: '表单名称',
@@ -70,7 +69,7 @@ function handleDelete(row: FormRow) {
     negativeText: '取消',
     onPositiveClick: async () => {
       try {
-        await deleteAdminScreeningAutoFillFormsId(row.id)
+        await api.admin.deleteScreeningAutoFillFormsId(row.id)
         message.success('删除成功')
         getList()
       }

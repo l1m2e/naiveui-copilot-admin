@@ -413,7 +413,6 @@ export { getExperimentsReviewSummary } from "./clients/Experiments/getExperiment
 export { getLogs } from "./clients/Logs/getLogs";
 export { getLogsRunId } from "./clients/Logs/getLogsRunId";
 export { getLogsTransports } from "./clients/Logs/getLogsTransports";
-export { MCPClientVersions } from "./clients/MCP Client Versions/MCPClientVersions";
 export { deleteStoredMcpClientsMcpClientIdVersionsVersionId } from "./clients/MCP Client Versions/deleteStoredMcpClientsMcpClientIdVersionsVersionId";
 export { getStoredMcpClientsMcpClientIdVersions } from "./clients/MCP Client Versions/getStoredMcpClientsMcpClientIdVersions";
 export { getStoredMcpClientsMcpClientIdVersionsCompare } from "./clients/MCP Client Versions/getStoredMcpClientsMcpClientIdVersionsCompare";
@@ -421,7 +420,6 @@ export { getStoredMcpClientsMcpClientIdVersionsVersionId } from "./clients/MCP C
 export { postStoredMcpClientsMcpClientIdVersions } from "./clients/MCP Client Versions/postStoredMcpClientsMcpClientIdVersions";
 export { postStoredMcpClientsMcpClientIdVersionsVersionIdActivate } from "./clients/MCP Client Versions/postStoredMcpClientsMcpClientIdVersionsVersionIdActivate";
 export { postStoredMcpClientsMcpClientIdVersionsVersionIdRestore } from "./clients/MCP Client Versions/postStoredMcpClientsMcpClientIdVersionsVersionIdRestore";
-export { MCP } from "./clients/MCP/MCP";
 export { getMcpServerIdResources } from "./clients/MCP/getMcpServerIdResources";
 export { getMcpServerIdTools } from "./clients/MCP/getMcpServerIdTools";
 export { getMcpServerIdToolsToolId } from "./clients/MCP/getMcpServerIdToolsToolId";

@@ -34,9 +34,11 @@ function makeConfig(name: string, data: any) {
         `find "src/api/generated/${name}" -name '*.ts' -exec sed -i '' "s/\\.ts'/'/g" {} +`,
         `find "src/api/generated/${name}" -name '*.ts' -exec sed -i '' 's/\\.ts"/"/g' {} +`,
         // 删除无意义的聚合函数文件（不以 HTTP 方法开头的 grouped client）
-        `find "src/api/generated/${name}/clients" -type f -name '*.ts' ! -name 'index.ts' ! -name 'get*' ! -name 'post*' ! -name 'put*' ! -name 'patch*' ! -name 'delete*' -delete`,
+        // 限制 mindepth/maxdepth 为 2，避免误删嵌套子目录中的合法客户端文件（如 get/wellKnownAgentIdAgentCard/Json.ts）
+        `find "src/api/generated/${name}/clients" -mindepth 2 -maxdepth 2 -type f -name '*.ts' ! -name 'index.ts' ! -name 'get*' ! -name 'post*' ! -name 'put*' ! -name 'patch*' ! -name 'delete*' -delete`,
         // 从 barrel 中移除已删除聚合函数的引用
-        `perl -i -ne 'print unless /^export \\{ [a-z]/ && m!/clients/! && !/^export \\{ (?:get|post|put|patch|delete|head)/' "src/api/generated/${name}/index.ts"`,
+        // [a-zA-Z] 匹配大小写开头的导出名（如 MCP、MCPClientVersions）
+        `perl -i -ne 'print unless /^export \\{ [a-zA-Z]/ && m!/clients/! && !/^export \\{ (?:get|post|put|patch|delete|head)/' "src/api/generated/${name}/index.ts"`,
       ],
     },
     plugins: [

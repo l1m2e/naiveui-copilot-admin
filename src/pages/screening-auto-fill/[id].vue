@@ -1,5 +1,4 @@
 <script lang="tsx" setup>
-import { getAdminScreeningAutoFillFormsId, postAdminScreeningAutoFillForms, putAdminScreeningAutoFillFormsId } from '~/api/generated'
 import MarkdownEditor from '~/components/markdown-editor/index.vue'
 
 definePage({
@@ -41,7 +40,7 @@ const rules = {
 async function loadForm() {
   if (isNew.value) return
   try {
-    const form = await getAdminScreeningAutoFillFormsId(id.value)
+    const form = await api.admin.getScreeningAutoFillFormsId(id.value)
     formValue.value = {
       name: form.name,
       formKey: form.formKey,
@@ -72,7 +71,7 @@ async function handleSubmit() {
 
   try {
     if (isNew.value) {
-      await postAdminScreeningAutoFillForms({
+      await api.admin.postScreeningAutoFillForms({
         name: formValue.value.name,
         formKey: formValue.value.formKey,
         prompt: formValue.value.prompt,
@@ -81,7 +80,7 @@ async function handleSubmit() {
       message.success('创建成功')
     }
     else {
-      await putAdminScreeningAutoFillFormsId(id.value, {
+      await api.admin.putScreeningAutoFillFormsId(id.value, {
         name: formValue.value.name,
         formKey: formValue.value.formKey,
         prompt: formValue.value.prompt,
