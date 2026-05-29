@@ -6,6 +6,7 @@ export default antfu(
     formatters: true,
     ignores: [
       '.github/prompts/**/*.md',
+      'src/api/generated/**',
     ],
   },
   {

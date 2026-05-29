@@ -1,6 +1,6 @@
 <script lang="tsx" setup>
-import type { GetAdminScreeningAutoFillForms200 } from '~/api/generated'
-import { deleteAdminScreeningAutoFillFormsId, getAdminScreeningAutoFillForms } from '~/api/generated'
+import type { GetScreeningAutoFillForms200 } from '~/api/generated/admin'
+import { deleteScreeningAutoFillFormsId, getScreeningAutoFillForms } from '~/api/generated/admin'
 
 definePage({
   meta: {

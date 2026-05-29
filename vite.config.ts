@@ -52,6 +52,9 @@ export default defineConfig({
           yup: [
             ['*', 'yup'],
           ],
+        },
+        {
+          '~/api': ['api'],
         }
       ],
       dts: 'src/types/auto-imports.d.ts',
